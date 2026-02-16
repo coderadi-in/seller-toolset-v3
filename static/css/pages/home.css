@@ -1,0 +1,66 @@
+/* | HERO SECTION [START] */
+.hero .left,
+.hero .right {
+    width: 50%;
+}
+
+.h1 p {
+    font-size: 4rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.hero .btn {width: fit-content;}
+
+.hero .img {
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px var(--color-text-main);
+}
+/* | HERO SECTION [END] */
+
+.main .divider {
+    max-width: 700px;
+    margin: 0 auto;
+    width: min(100%, 80vw);
+}
+
+/* | TOOLS SECTION [START] */
+.tools .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.tools .tool {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--color-border);
+}
+/* | TOOLS SECTION [END] */
+
+/* | STRIP SECTION [START] */
+.strip {
+    background-color: var(--color-bg-card);
+    text-align: center;
+}
+
+.strip .para {
+    font-size: var(--f2);
+    font-style: italic;
+}
+/* | STRIP SECTION [END] */
+
+/* & RESPONSIVE VERSIONS */
+@media (max-width: 768px) {
+    .hero .section {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .hero .left,
+    .hero .right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 568px) {
+    .hero .h1 p {font-size: 2.5rem;}
+}

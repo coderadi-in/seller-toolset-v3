@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
+    <title>Seller toolset</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/home.css') }}">
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+    <main class="main column gap-100">
+        <section class="hero">
+            <section class="section row gap-50">
+                <div class="left column gap-20">
+                    <h1 class="h1">
+                        <p>Crop PDFs.</p>
+                        <p>Calculate prices.</p>
+                        <p>Track returns.</p>
+                    </h1>
+
+                    <h3 class="h3">All-in-one workspace for documents and business math.</h3>
+
+                    <a href="/tools/pdf-cropper/" class="link btn fl">Start with PDF cropper</a>
+                </div>
+
+                <div class="right center">
+                    <img src="{{ url_for('static', filename='assets/images/hero-img.png') }}"
+                        alt="Brand logo of the company owning the app" class="img">
+                </div>
+            </section>
+        </section>
+
+        <hr class="divider">
+
+        <section class="tools" id="tools">
+            <section class="section column gap-50">
+                <div class="head column v-center gap-10">
+                    <h1 class="h1">Explore tools</h1>
+                    <p class="para">Explore a curated selection of tools built for optimizing business math.</p>
+                </div>
+
+                <div class="body grid gap-20">
+                    <a href="/tools/pdf-cropper/" class="tool link column gap-20">
+                        <div class="row gap-10">
+                            <img src="{{ url_for('static', filename='assets/icons/pdf.png') }}" alt="PDF cropper"
+                                class="icon">
+
+                            <h2 class="h2">PDF Cropper</h2>
+                        </div>
+
+                        <p class="para">This tool is helpful to crop PDFs of invoices of different E-com platforms and extract shipping label from them.</p>
+                    </a>
+
+                    <a href="/tools/cr-calculator/" class="tool link column gap-20">
+                        <div class="row gap-10">
+                            <img src="{{ url_for('static', filename='assets/icons/pr-calc.png') }}" alt="CR Calculator"
+                                class="icon">
+
+                            <h2 class="h2">CR Calculator</h2>
+                        </div>
+
+                        <p class="para">This tool allow you to calculate the hidden losses on products like CR (Custom return) per order.</p>
+                    </a>
+
+                    <a href="/tools/price-calculator/" class="tool link column gap-20">
+                        <div class="row gap-10">
+                            <img src="{{ url_for('static', filename='assets/icons/sp-calc.png') }}"
+                                alt="Price Calculator" class="icon">
+
+                            <h2 class="h2">Price calculator</h2>
+                        </div>
+
+                        <p class="para">This tool is useful to calculate the ideal price of a product including margins and hidden losses per order.</p>
+                    </a>
+                </div>
+            </section>
+        </section>
+
+        <section class="strip">
+            <section class="section column v-center gap-20">
+                <p class="para">“Built for creators, freelancers & sellers”</p>
+                <a href="#tools" class="link btn fl">Get started</a>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="{{ url_for('static', filename='js/base/observer.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/home.js') }}"></script>
+</body>
+
+</html>
