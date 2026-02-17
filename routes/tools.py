@@ -2,8 +2,7 @@
 
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
-from pypdf import PdfReader, PdfWriter
-from io import BytesIO
+import coderadi.cropper as cropper
 import time
 
 # ! INITIALIZING TOOLS ROUTER
@@ -26,34 +25,20 @@ def crop_pdf_route():
     if (not pdf_file.read()):
         return redirect(url_for('tools.pdf_cropper'))
     
-    # INITIALIZING PDF MANAGEMENT
-    reader = PdfReader(pdf_file)
-    writer = PdfWriter()
-    output = BytesIO()
+    if (platform == 'flipkart'):
+        output = cropper.crop_flipkart(pdf_file)
 
-    # ITERATING OVER THE PDF FILE
-    for page in reader.pages:
-        # SETTING FIRST RATIO
-        page.mediabox.upper_right = (
-            page.mediabox.width * 0.7,
-            page.mediabox.height - page.mediabox.height * 0.03
-        )
+    elif (platform == 'shopsy'):
+        output = cropper.crop_shopsy(pdf_file)
 
-        # SETTING SECOND RATIO
-        page.mediabox.lower_left = (
-            page.mediabox.width * 0.43,
-            page.mediabox.height * 0.55
-        )
+    elif (platform == 'meesho'):
+        output = cropper.crop_meesho(pdf_file)
 
-        # ADDING UPDATE RATIO IN PDF WRITER
-        writer.add_page(page)
-
-    # WRITING NEW PDF
-    writer.write(output)
-    output.seek(0)
+    elif (platform  == 'amazon'):
+        output = cropper.process_amazon(pdf_file)
 
     end = time.time()
-    print("Cropped {} pages in {} seconds".format(len(reader.pages), end - start))
+    print("Cropped in {} seconds".format(end - start))
 
     # RETURN FILE
     return send_file(
