@@ -1,6 +1,8 @@
+// ? IMPORTING OBSERVER
+import { observer } from '../base/observer.js';
+
 // ? GETTING DOC ELEMENTS
 const productCost = document.getElementById('productCost');
-const shippingCost = document.getElementById('shippingCost');
 const packagingCost = document.getElementById('packagingCost');
 const crLoss = document.getElementById('crLoss');
 const rtoRate = document.getElementById('rtoRate');
@@ -23,7 +25,6 @@ const profitMarginOutput = document.getElementById('profitMargin');
 // * FUNCTION TO GET SUMMARY INSIGHTS
 function getPricingInsights({
     productCost,          // ₹
-    shippingCost,         // ₹
     packagingCost,        // ₹
     crLossPerOrder,       // ₹
 
@@ -44,12 +45,11 @@ function getPricingInsights({
 
     // 1. ESTIMATE RTO LOSS
     // Assumption: RTO loss mainly adds shipping + packaging again
-    const rtoLossPerOrder = rtoRate * (shippingCost + packagingCost);
+    const rtoLossPerOrder = rtoRate * packagingCost;
 
     // 2. BASE COST (DIRECT EXPENSE)
     const baseCost =
         productCost +
-        shippingCost +
         packagingCost +
         crLossPerOrder +
         rtoLossPerOrder +
@@ -101,7 +101,6 @@ function getPricingInsights({
 // & PRICE CALCULATION FUNCTIONALITY
 calculateBtn.addEventListener('click', () => {
     const productCostValue = Number(productCost.value) || 0;
-    const shippingCostValue = Number(shippingCost.value) || 0;
     const packagingCostValue = Number(packagingCost.value) || 0;
     const crLossValue = Number(crLoss.value) || 0;
     const rtoRateValue = Number(rtoRate.value) || 0;
@@ -114,7 +113,6 @@ calculateBtn.addEventListener('click', () => {
     try {
         const results = getPricingInsights({
             productCost: productCostValue,
-            shippingCost: shippingCostValue,
             packagingCost: packagingCostValue,
             crLossPerOrder: crLossValue,
             rtoRatePercent: rtoRateValue,
@@ -142,7 +140,6 @@ calculateBtn.addEventListener('click', () => {
 // & RESET FUNCTIONALITY
 resetBtn.addEventListener('click', () => {
     productCost.value = '';
-    shippingCost.value = '';
     packagingCost.value = '';
     crLoss.value = '';
     rtoRate.value = '';
@@ -156,4 +153,15 @@ resetBtn.addEventListener('click', () => {
     sellingPriceOutput.textContent = '\u20B9 0.00';
     expectedProfitOutput.textContent = '\u20B9 0.00';
     profitMarginOutput.textContent = '0.00 %';
+})
+
+// ? GETTING SECTION ELEMENTS
+const calculatorSection = document.querySelector('.calculator');
+
+// & PREPARING OBSERVABLES ARRAY
+const observables = [calculatorSection];
+
+// & OBSERVING ELEMENTS
+observables.forEach((observable) => {
+    observer.observe(observable)
 })
