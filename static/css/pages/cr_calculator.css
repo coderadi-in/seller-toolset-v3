@@ -10,8 +10,10 @@
 
 .stats-card .heading .h3 {padding: 20px;}
 .stats-card .heading .symbol {padding: 20px;}
-
 .stats-card .body {padding: 20px;}
+
+.stats-card .input-row label,
+.stats-card .input-row input {flex: 1;}
 /* | STATS-CARD [END] */
 
 /* | RIGHT PANEL STATS CARD [START] */
@@ -20,4 +22,11 @@
 /* & RESPONSIVE VERSIONS */
 @media (max-width: 1090px) {
     .calculator .section {flex-direction: column;}
+}
+
+@media (max-width: 568px) {
+    .input-row {
+        flex-direction: column;
+        align-items: start;
+    }
 }

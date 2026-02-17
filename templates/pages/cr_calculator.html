@@ -27,72 +27,59 @@
                         </div>
 
                         <div class="body column gap-10">
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="returnRate">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="totalOrders" class="row gap-10">
+                                    <span class="symbol fl-icon">orders</span>
+                                    <span class="text">Total orders</span>
+                                </label>
+                                <input type="number" name="totalOrders" id="totalOrders" class="input" placeholder="e.g.: 100" value="100">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="totalReturn" class="row gap-10">
+                                    <span class="symbol">keyboard_return</span>
+                                    <span class="text">Total return (%)</span>
+                                </label>
+                                <input type="number" name="totalReturn" id="totalReturn" class="input" placeholder="e.g.: 10">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb ga-5">
+                                <label for="returnLoss" class="row gap-10">
+                                    <span class="symbol">trending_down</span>
+                                    <span class="text">Return loss</span>
+                                </label>
+                                <input type="number" name="returnLoss" id="returnLoss" class="input" placeholder="e.g.: 150">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="packagingLoss" class="row gap-10">
                                     <span class="symbol fl-icon">box</span>
-                                    <span class="text">Return rate (%)</span>
+                                    <span class="text">Packaging loss</span>
                                 </label>
-                                <input type="number" name="returnRate" id="returnRate" class="input"
-                                    placeholder="e.g.: 5%, 10%">
+                                <input type="number" name="packagingLoss" id="packagingLoss" class="input" placeholder="e.g.: 10">
                             </div>
                             <hr class="divider">
 
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="forwardShipping">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="totalRto" class="row gap-10">
                                     <span class="symbol fl-icon">local_shipping</span>
-                                    <span class="text">Forward Shipping (₹)</span>
+                                    <span class="text">Total RTO (%)</span>
                                 </label>
-                                <input type="number" name="forwardShipping" id="forwardShipping" class="input"
-                                    placeholder="To customer">
+                                <input type="number" name="totalRto" id="totalRto" class="input" placeholder="e.g.: 10">
                             </div>
                             <hr class="divider">
 
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="backwardShipping">
-                                    <span class="symbol fl-icon">local_shipping</span>
-                                    <span class="text">Backward Shipping (₹)</span>
+                            <div class="input-row row h-sb gap-5">
+                                <label for="rtoLoss" class="row gap-10">
+                                    <span class="symbol">moped</span>
+                                    <span class="text">RTO loss</span>
                                 </label>
-                                <input type="number" name="backwardShipping" id="backwardShipping" class="input"
-                                    placeholder="To seller">
+                                <input type="number" name="rtoLoss" id="rtoLoss" class="input" placeholder="e.g.: 0">
                             </div>
                             <hr class="divider">
-
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="packagingCost">
-                                    <span class="symbol fl-icon">package_2</span>
-                                    <span class="text">Packaging Cost (₹)</span>
-                                </label>
-                                <input type="number" name="packagingCost" id="packagingCost" class="input"
-                                    placeholder="e.g.: 199, 249">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stats-card column gap-10">
-                        <div class="heading column">
-                            <h3 class="h3">RTO (Courier Return)</h3>
-                            <hr class="divider">
-                        </div>
-
-                        <div class="body column gap-10">
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="rtoRate">
-                                    <span class="symbol fl-icon">moped</span>
-                                    <span class="text">RTO Rate (%)</span>
-                                </label>
-                                <input type="number" name="rtoRate" id="rtoRate" class="input"
-                                    placeholder="e.g.: 5%, 10%">
-                            </div>
-                            <hr class="divider">
-
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="rtoCharge">
-                                    <span class="symbol fl-icon">toll</span>
-                                    <span class="text">RTO Charge (₹)</span>
-                                </label>
-                                <input type="number" name="rtoCharge" id="rtoCharge" class="input"
-                                    placeholder="e.g.: 99, 139">
-                            </div>
                         </div>
                     </div>
 
@@ -113,30 +100,30 @@
                         </div>
 
                         <div class="body column gap-10">
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="crLoss">
+                            <div class="input-row row h-sb gap-5">
+                                <label class="row gap-10" for="crLossOutput">
                                     <span class="symbol fl-icon">trending_down</span>
-                                    <span class="text">CR Loss per order (₹)</span>
+                                    <span class="text">CR Loss (₹)</span>
                                 </label>
-                                <span class="output text" id="crLoss">₹ 0.00</span>
+                                <span class="output text" id="crLossOutput">₹ 0.00</span>
                             </div>
                             <hr class="divider">
 
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="rtoLoss">
+                            <div class="input-row row h-sb gap-5">
+                                <label class="row gap-10" for="rtoLossOutput">
                                     <span class="symbol fl-icon">toll</span>
-                                    <span class="text">RTO Loss per order (₹)</span>
+                                    <span class="text">RTO Loss (₹)</span>
                                 </label>
-                                <span class="output text" id="rtoLoss">₹ 0.00</span>
+                                <span class="output text" id="rtoLossOutput">₹ 0.00</span>
                             </div>
                             <hr class="divider">
 
-                            <div class="input-row res-row h-sb gap-5">
-                                <label class="row gap-10" for="totalLoss">
+                            <div class="input-row row h-sb gap-5">
+                                <label class="row gap-10" for="totalLossOutput">
                                     <span class="symbol fl-icon">equal</span>
-                                    <span class="text">Total Loss/order (₹)</span>
+                                    <span class="text">Total Loss (₹)</span>
                                 </label>
-                                <span class="output text" id="totalLoss">₹ 0.00</span>
+                                <span class="output text" id="totalLossOutput">₹ 0.00</span>
                             </div>
                         </div>
                     </div>

@@ -1,89 +1,101 @@
 // ? IMPORTING OBSERVER
 import { observer } from '../base/observer.js';
 
-// ? GETTING DOC ELEMENTS
-const returnRate = document.getElementById('returnRate');
-const forwardShipping = document.getElementById('forwardShipping');
-const backwardShipping = document.getElementById('backwardShipping');
-const packagingCost = document.getElementById('packagingCost');
-const rtoRate = document.getElementById('rtoRate');
-const rtoCharge = document.getElementById('rtoCharge');
-const calculateBtn = document.querySelector('#calcbtn');
-const resetBtn = document.querySelector('#resbtn');
-const crLossOutput = document.getElementById('crLoss');
-const rtoLossOutput = document.getElementById('rtoLoss');
-const totalLossOutput = document.getElementById('totalLoss');
+// ? GETTING INPUTS
+const totalOrders = document.getElementById("totalOrders");
+const totalReturn = document.getElementById("totalReturn");
+const returnLoss = document.getElementById("returnLoss");
+const packagingLoss = document.getElementById("packagingLoss");
+const totalRto = document.getElementById("totalRto");
+const rtoLoss = document.getElementById("rtoLoss");
 
+// ? GETTING OUTPUTS
+const crLossOutput = document.getElementById("crLossOutput");
+const rtoLossOutput = document.getElementById("rtoLossOutput");
+const totalLossOutput = document.getElementById("totalLossOutput");
 
-// * FUNCTION TO CALCULATE CR LOSSES
-function calculateCRLoss({
-    returnRate,          // % (eg. 5)
-    forwardShipping,     // ₹
-    reverseShipping,     // ₹
-    packagingCost        // ₹
-}) {
-    const rate = returnRate / 100;
-    const returnCost = forwardShipping + reverseShipping + packagingCost;
-    return rate * returnCost; // loss per order
+// ? GETTING ACTION ELEMENTS [BUTTONS]
+const calculateBtn = document.getElementById("calcbtn");
+const resetBtn = document.getElementById("resbtn");
+
+// * FUNCTION TO CALCULATE CUSTOMER RETURN
+function calculateCRLoss(
+    totalOrders,
+    totalReturn,
+    returnLoss,
+    packagingLoss,
+    totalRto
+) {
+    // CALCULATE LOSS
+    let output = totalReturn * (returnLoss + packagingLoss) / (totalOrders - totalReturn - totalRto)
+    return output
 }
 
-// * FUNCTION TO CALCULATE RTO LOSSES
-function calculateRTOLoss({
-    rtoRate,             // % (eg. 10)
-    rtoCharge,           // ₹
-}) {
-    const rate = rtoRate / 100;
-    return rate * rtoCharge; // loss per order
+// * FUNCTION TO CALCULATE RTO LOSS
+function calculateRTOLoss(
+    totalOrders,
+    totalRto,
+    rtoLoss,
+    packagingLoss,
+    totalReturn
+) {
+    // CALCULATE LOSS
+    let output = totalReturn * (rtoLoss + packagingLoss) / (totalOrders - totalReturn - totalRto)
+    return output
 }
 
 // & LOSS CALCULATION FUNCTIONALITY
 calculateBtn.addEventListener('click', () => {
     // GET ALL INPUT VALUES
-    const returnRateValue = Number(returnRate.value) || 0;
-    const forwardShippingValue = Number(forwardShipping.value) || 0;
-    const backwardShippingValue = Number(backwardShipping.value) || 0;
-    const packagingCostValue = Number(packagingCost.value) || 0;
-    const rtoRateValue = Number(rtoRate.value) || 0;
-    const rtoChargeValue = Number(rtoCharge.value) || 0;
+    let totalOrdersValue = Number(totalOrders.value) || 0;
+    let totalReturnValue = Number(totalReturn.value) || 0;
+    let returnLossValue = Number(returnLoss.value) || 0;
+    let packagingLossValue = Number(packagingLoss.value) || 0;
+    let totalRtoValue = Number(totalRto.value) || 0;
+    let rtoLossValue = Number(rtoLoss.value) || 0;
 
     // CALCULATE CR LOSS
-    const crLoss = calculateCRLoss({
-        returnRate: returnRateValue,
-        forwardShipping: forwardShippingValue,
-        reverseShipping: backwardShippingValue,
-        packagingCost: packagingCostValue
-    });
+    const crLossResult = calculateCRLoss(
+        totalOrdersValue,
+        totalReturnValue,
+        returnLossValue,
+        packagingLossValue,
+        totalRtoValue
+    );
 
     // CALCULATE RTO LOSS
-    const rtoLoss = calculateRTOLoss({
-        rtoRate: rtoRateValue,
-        rtoCharge: rtoChargeValue
-    });
+    const rtoLossResult = calculateRTOLoss(
+        totalOrdersValue,
+        totalRtoValue,
+        rtoLossValue,
+        packagingLossValue,
+        totalReturnValue
+    );
 
     // CALCULATE TOTAL LOSS
-    const totalLoss = crLoss + rtoLoss;
+    const totalLossResult = crLossResult + rtoLossResult;
 
     // FORMAT CURRENCY AND SHOW OUTPUT
     const formatCurrency = (value) => `\u20B9 ${value.toFixed(2)}`;
-    crLossOutput.textContent = formatCurrency(crLoss);
-    rtoLossOutput.textContent = formatCurrency(rtoLoss);
-    totalLossOutput.textContent = formatCurrency(totalLoss);
+    crLossOutput.textContent = formatCurrency(crLossResult);
+    rtoLossOutput.textContent = formatCurrency(rtoLossResult);
+    totalLossOutput.textContent = formatCurrency(totalLossResult);
 })
 
 // & RESET FUNCTIONALITY
 resetBtn.addEventListener('click', () => {
     // RESET ALL INPUTS
-    returnRate.value = '';
-    forwardShipping.value = '';
-    backwardShipping.value = '';
-    packagingCost.value = '';
-    rtoRate.value = '';
-    rtoCharge.value = '';
+    totalOrders.value = '';
+    totalReturn.value = '';
+    returnLoss.value = '';
+    packagingLoss.value = '';
+    totalRto.value = '';
+    rtoLoss.value = '';
 
     // RESET ALL OUTPUTS
     crLossOutput.textContent = '\u20B9 0.00';
-    rtoLossOcrLossOutput.textContent = '\u20B9 0.00';
-    totalLossOcrLossOutput.textContent = '\u20B9 0.00';
+    rtoLossOutput.textContent = '\u20B9 0.00';
+    totalLossOutput.textContent = '\u20B9 0.00';
 })
 
 // ? GETTING SECTION ELEMENTS
@@ -96,3 +108,4 @@ const observables = [calculatorSection];
 observables.forEach((observable) => {
     observer.observe(observable)
 })
+
