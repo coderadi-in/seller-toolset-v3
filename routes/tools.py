@@ -3,7 +3,6 @@
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 import coderadi.cropper as cropper
-import time
 
 # ! INITIALIZING TOOLS ROUTER
 tools = Blueprint("tools", __name__, url_prefix="/tools")
@@ -16,7 +15,6 @@ def pdf_cropper():
 # | PDF CROP HANDLER ROUTE
 @tools.route("/pdf-cropper/crop", methods=["POST"])
 def crop_pdf_route():
-    start = time.time()
     # ACCESSING FORM DATA
     pdf_file = request.files.get("fileUpload")
     platform = request.form.get("platformSelect")
@@ -36,9 +34,6 @@ def crop_pdf_route():
 
     elif (platform  == 'amazon'):
         output = cropper.process_amazon(pdf_file)
-
-    end = time.time()
-    print("Cropped in {} seconds".format(end - start))
 
     # RETURN FILE
     return send_file(
