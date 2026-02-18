@@ -26,8 +26,15 @@ function calculateCRLoss(
     packagingLoss,
     totalRto
 ) {
+    console.log(totalOrders, totalReturn, returnLoss, packagingLoss, totalRto);
+    // CONVERT TOTAL RETURN-RATE AND TOTAL RTO-RATE TO DECIMAL
+    let totalReturnDecimal = (totalReturn / 100) * totalOrders
+    let totalRtoDecimal = (totalRto / 100) * totalOrders
+
+    console.log(totalReturnDecimal, totalRtoDecimal);
+
     // CALCULATE LOSS
-    let output = totalReturn * (returnLoss + packagingLoss) / (totalOrders - totalReturn - totalRto)
+    let output = totalReturnDecimal * (returnLoss + packagingLoss) / (totalOrders - totalReturnDecimal - totalRtoDecimal)
     return output
 }
 
