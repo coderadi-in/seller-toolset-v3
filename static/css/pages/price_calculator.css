@@ -1,6 +1,7 @@
-/* | CALCULATOR UI [START] */
-.calculator .left-panel,
-.calculator .right-panel {flex: 1;}
+/* | LEFT PANEL */
+.left-panel {
+    grid-template-columns: repeat(2, 1fr);
+}
 
 /* | STATS-CARDS [START] */
 .stats-card {
@@ -8,23 +9,40 @@
     border-radius: 8px;
 }
 
-.stats-card .heading .h3 {padding: 20px;}
-.stats-card .heading .symbol {padding: 20px;}
-.stats-card .body {padding: 20px;}
+.stats-card .heading .h3 {
+    padding: 20px;
+}
+
+.stats-card .heading .symbol {
+    padding: 20px;
+}
+
+.stats-card .body {
+    padding: 20px;
+}
 
 .stats-card .input-row label,
 .stats-card .input-row input,
-.stats-card .input-row .output-data {width: 100%;}
+.stats-card .input-row .output-data {
+    width: 100%;
+}
 
-.stats-card .input-row .output-data {text-align: end;}
+.stats-card .input-row .output-data {
+    text-align: end;
+}
+
 /* | STATS-CARD [END] */
 
 /* | RIGHT PANEL STATS CARD [START] */
-.right-panel .input-row .output.text {color: var(--color-accent-green);}
+.right-panel .input-row .output.text {
+    color: var(--color-accent-green);
+}
 
 /* & RESPONSIVE VERSIONS */
 @media (max-width: 1024px) {
-    .calculator .section {flex-direction: column;}
+    .left-panel {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 568px) {

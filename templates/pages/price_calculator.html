@@ -18,8 +18,8 @@
 
     <main class="main column gap-100">
         <section class="calculator">
-            <section class="section flex gap-40">
-                <div class="left-panel column gap-20">
+            <section class="section column gap-40">
+                <div class="left-panel grid gap-20">
                     <div class="stats-card column gap-10">
                         <div class="heading column">
                             <h3 class="h3">Inputs</h3>
@@ -32,167 +32,182 @@
                                     <span class="symbol fl-icon">currency_rupee</span>
                                     <span class="text">Product Cost (₹)</span>
                                 </label>
-                                <input type="number" name="productCost" id="productCost" class="input" placeholder="wholesaler/supplier">
+                                <input type="number" name="productCost" id="productCost" class="input"
+                                    placeholder="e.g.: 100">
                             </div>
                             <hr class="divider">
-                            
+
                             <div class="input-row row h-sb gap-5">
                                 <label for="packagingCost" class="row gap-10">
                                     <span class="symbol fl-icon">box</span>
                                     <span class="text">Packaging cost (₹)</span>
                                 </label>
-                                <input type="number" name="packagingCost" id="packagingCost" class="input" placeholder="To customer">
+                                <input type="number" name="packagingCost" id="packagingCost" class="input"
+                                    placeholder="e.g.: 10">
                             </div>
                             <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="shippingCost" class="row gap-10">
+                                    <span class="symbol fl-icon">local_shipping</span>
+                                    <span class="text">Shipping cost (₹)</span>
+                                </label>
+                                <input type="number" name="shippingCost" id="shippingCost" class="input"
+                                    placeholder="e.g.: 60">
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="stats-card column gap-10">
                         <div class="heading column">
-                            <h3 class="h3">Hidden Losses</h3>
+                            <h3 class="h3">Hidden losses</h3>
                             <hr class="divider">
                         </div>
 
                         <div class="body column gap-10">
                             <div class="input-row row h-sb gap-5">
-                                <label for="crLoss" class="row gap-10">
-                                    <span class="symbol fl-icon">trending_down</span>
-                                    <span class="text">CR Loss/order (₹)</span>
+                                <label for="customerReturn" class="row gap-10">
+                                    <span class="symbol fl-icon">subdirectory_arrow_left</span>
+                                    <span class="text">Customer return (₹)</span>
                                 </label>
-                                <input type="number" name="crLoss" id="crLoss" class="input" placeholder="Return loss/order">
+                                <input type="number" name="customerReturn" id="customerReturn" class="input"
+                                    placeholder="e.g.: 20">
                             </div>
                             <hr class="divider">
-                            
+
                             <div class="input-row row h-sb gap-5">
-                                <label for="rtoRate" class="row gap-10">
+                                <label for="rtoLoss" class="row gap-10">
                                     <span class="symbol fl-icon">moped</span>
-                                    <span class="text">RTO Rate (%)</span>
+                                    <span class="text">RTO Loss (₹)</span>
                                 </label>
-                                <input type="number" name="rtoRate" id="rtoRate" class="input" placeholder="RTO loss/order">
+                                <input type="number" name="rtoLoss" id="rtoLoss" class="input"
+                                    placeholder="e.g.: 10">
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="stats-card column gap-10">
                         <div class="heading column">
-                            <h3 class="h3">Platform + Marketing</h3>
+                            <h3 class="h3">Additional expense</h3>
                             <hr class="divider">
                         </div>
 
                         <div class="body column gap-10">
-                            <div class="input-row row h-sb gap-5">
-                                <label for="commissionFee" class="row gap-10">
-                                    <span class="symbol fl-icon">store</span>
-                                    <span class="text">Commission / Marketplace Fee (%)</span>
-                                </label>
-                                <input type="number" name="commissionFee" id="commissionFee" class="input" placeholder="Platform free">
-                            </div>
-                            <hr class="divider">
-                            
                             <div class="input-row row h-sb gap-5">
                                 <label for="adsCost" class="row gap-10">
                                     <span class="symbol fl-icon">ad</span>
-                                    <span class="text">Ads Cost/order (₹)</span>
+                                    <span class="text">Ads cost (₹)</span>
                                 </label>
-                                <input type="number" name="adsCost" id="adsCost" class="input" placeholder="CAC">
+                                <input type="number" name="adsCost" id="adsCost" class="input"
+                                    placeholder="e.g.: 10">
+                            </div>
+                            <hr class="divider">
+                            
+                            <div class="input-row row h-sb gap-5">
+                                <label for="platformFees" class="row gap-10">
+                                    <span class="symbol fl-icon">toll</span>
+                                    <span class="text">Platform fees (%)</span>
+                                </label>
+                                <input type="number" name="platformFees" id="platformFees" class="input"
+                                    placeholder="e.g.: 20">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="gst" class="row gap-10">
+                                    <span class="symbol fl-icon">account_balance</span>
+                                    <span class="text">GST (%)</span>
+                                </label>
+                                <input type="number" name="gst" id="gst" class="input"
+                                    placeholder="e.g.: 18" value="18">
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="stats-card column gap-10">
                         <div class="heading column">
-                            <h3 class="h3">Pricing Controls</h3>
+                            <h3 class="h3">Pricing controls</h3>
                             <hr class="divider">
                         </div>
 
                         <div class="body column gap-10">
                             <div class="input-row row h-sb gap-5">
-                                <label for="desiredMargin" class="row gap-10">
+                                <label for="profitMargin" class="row gap-10">
                                     <span class="symbol fl-icon">percent</span>
-                                    <span class="text">Desired Profit Margin (%)</span>
+                                    <span class="text">Profit margin (₹)</span>
                                 </label>
-                                <input type="number" name="desiredMargin" id="desiredMargin" class="input" placeholder="e.g.: 5%, 10%">
+                                <input type="number" name="profitMargin" id="profitMargin" class="input"
+                                    placeholder="e.g.: 50">
                             </div>
                             <hr class="divider">
-                            
+
                             <div class="input-row row h-sb gap-5">
                                 <label for="discount" class="row gap-10">
                                     <span class="symbol fl-icon">percent_discount</span>
-                                    <span class="text">Discount / Promotion (%)</span>
+                                    <span class="text">Discounts (%)</span>
                                 </label>
-                                <input type="number" name="discount" id="discount" class="input" placeholder="if any">
-                            </div>
-                            <hr class="divider">
-                            
-                            <div class="input-row row h-sb gap-5">
-                                <label for="taxRate" class="row gap-10">
-                                    <span class="symbol fl-icon">account_balance</span>
-                                    <span class="text">GST Rate (%)</span>
-                                </label>
-                                <input type="number" name="taxRate" id="taxRate" class="input" value="18">
+                                <input type="number" name="discount" id="discount" class="input"
+                                    placeholder="e.g.: 10" value="0">
                             </div>
                         </div>
                     </div>
 
-                    <ul class="list res-row gap-10">
-                        <li><button class="btn fl" id="calcbtn">Calculate</button></li>
-                        <li><button class="btn ot" id="resbtn">Reset</button></li>
-                    </ul>
+                    <div class="actions res-row gap-10">
+                        <div class="btn fl" id="calcBtn">Calculate</div>
+                        <div class="btn ot" id="resBtn">Reset</div>
+                    </div>
                 </div>
 
-                <div class="right-panel">
+                <div class="right-panel column gap-20">
                     <div class="stats-card column gap-10">
                         <div class="heading column">
-                            <div class="row h-sb">
-                                <h3 class="h3">Summary</h3>
-                                <span class="symbol">toc</span>
-                            </div>
+                            <h3 class="h3">Summary</h3>
                             <hr class="divider">
                         </div>
 
                         <div class="body column gap-10">
                             <div class="input-row row h-sb gap-5">
-                                <label for="totalCost" class="row gap-10">
-                                    <span class="symbol">equal</span>
-                                    <span class="text">Total cost/order (₹)</span>
-                                </label>
-                                <span class="text output-data" id="totalCost">₹ 0.00</span>
+                                <div class="row gap-10">
+                                    <span class="symbol fl-icon">stacks</span>
+                                    <span class="text">Total cost (₹)</span>
+                                </div>
+                                <span class="text" id="totalCostOutput">₹ 0.00</span>
                             </div>
                             <hr class="divider">
                             
                             <div class="input-row row h-sb gap-5">
-                                <label for="sellingPrice" class="row gap-10">
-                                    <span class="symbol">price_check</span>
-                                    <span class="text">Suggest selling price (₹)</span>
-                                </label>
-                                <span class="output text output-data" id="sellingPrice">₹ 0.00</span>
+                                <div class="row gap-10">
+                                    <span class="symbol fl-icon">toll</span>
+                                    <span class="text">Platform fees (₹)</span>
+                                </div>
+                                <span class="text" id="platformFeesOutput">₹ 0.00</span>
                             </div>
                             <hr class="divider">
                             
                             <div class="input-row row h-sb gap-5">
-                                <label for="expectedProfit" class="row gap-10">
-                                    <span class="symbol">trending_up</span>
-                                    <span class="text">Expected Profit (₹)</span>
-                                </label>
-                                <span class="output text output-data" id="expectedProfit">₹ 0.00</span>
+                                <div class="row gap-10">
+                                    <span class="symbol fl-icon">account_balance</span>
+                                    <span class="text">GST (₹)</span>
+                                </div>
+                                <span class="text" id="gstOutput">₹ 0.00</span>
                             </div>
                             <hr class="divider">
                             
                             <div class="input-row row h-sb gap-5">
-                                <label for="profitMargin" class="row gap-10">
-                                    <span class="symbol">percent_discount</span>
-                                    <span class="text">Profit Margin (%)</span>
-                                </label>
-                                <span class="output text output-data" id="profitMargin">0.00 %</span>
+                                <div class="row gap-10">
+                                    <span class="symbol fl-icon">sell</span>
+                                    <span class="text">Suggested selling price</span>
+                                </div>
+                                <span class="text output" id="sellingPriceOutput">₹ 0.00</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </section>
-    </main>
 
-    <script type="module" src="{{ url_for('static', filename='js/pages/price_calculator.js') }}"></script>
+        <script type="module" src="{{ url_for('static', filename='js/pages/price_calculator.js') }}"></script>
+    </main>
 </body>
 
 </html>
