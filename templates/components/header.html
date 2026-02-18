@@ -3,24 +3,39 @@
 <header class="header">
     <section class="section column gap-10">
         <div class="content row h-sb">
-            <div class="row gap-10">
-                <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="Toolset logo" class="logo">
-                
-                <ul class="list row gap-10">
-                    <li><a href="/" class="link"><span class="symbol fl-icon">home</span></a></li>
-                    <li><button class="btn link" id="theme-control"><span class="symbol">contrast</span></button></li>
-                </ul>
+            <div class="row gap-20">
+                <span class="symbol menu-btn">menu</span>
+
+                <a href="/" class="link main-link">
+                    <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="Toolset logo"
+                        class="logo">
+                </a>
             </div>
 
-            <ul class="list row gap-10">
-                <li><a href="/tools/pdf-cropper/" class="link"><span class="symbol">crop</span></a></li>
-                <li><a href="/tools/cr-calculator/" class="link"><span class="symbol">trending_down</span></a></li>
-                <li><a href="/tools/price-calculator/" class="link"><span class="symbol">sell</span></a></li>
+            <ul class="navigation list row gap-20">
+                <button class="btn link" id="theme-control"><span class="symbol">contrast</span></button>
+                <li><a href="/tools/pdf-cropper/" class="link"><span class="mini">CROP PDF</span></a></li>
+                <li><a href="/tools/cr-calculator/" class="link"><span class="mini">CUSTOM RETURN CALCULATOR</span></a>
+                </li>
+                <li><a href="/tools/price-calculator/" class="link"><span class="mini">PRICE CALCULATOR</span></a></li>
             </ul>
         </div>
 
         <hr class="divider">
     </section>
 </header>
+
+<nav class="nav column h-sb">
+    <span class="symbol menu-btn">close</span>
+
+    <ul class="navigation list column gap-20">
+        <li><span class="text title">MARKRTD E-COM TOOLS</span></li>
+        <li><a href="/tools/pdf-cropper/" class="link"><span class="mini">CROP PDF</span></a></li>
+        <li><a href="/tools/cr-calculator/" class="link"><span class="mini">CUSTOM RETURN CALCULATOR</span></a></li>
+        <li><a href="/tools/price-calculator/" class="link"><span class="mini">PRICE CALCULATOR</span></a></li>
+    </ul>
+
+    <div class="spare-item"></div>
+</nav>
 
 <script src="{{ url_for('static', filename='js/components/header.js') }}"></script>

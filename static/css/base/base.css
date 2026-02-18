@@ -3,7 +3,7 @@
 
 :root {
     /* New Color Palette */
-    --color-primary: #2563EB;
+    --color-primary: #EC5E27;
     --color-accent-green: #16A34A;
     --color-accent-red: #DD403A;
 
@@ -15,11 +15,11 @@
 
     --color-border: #E2E8F0;
 
-    --color-hover-primary: #1D4ED8;
+    --color-hover-primary: #EE7B4D;
     --color-hover-success: #15803D;
 
     /* Font Sizes */
-    --f0: 10px;
+    --f0: 12px;
     --f1: 16px;
     --f2: 20px;
     --f3: 32px;
@@ -27,7 +27,7 @@
 }
 
 .dark {
-    --color-primary: #3B82F6;
+    --color-primary: #EC5E27;
     --color-accent-green: #22C55E;
 
     --color-bg-main: #020617;
@@ -38,7 +38,7 @@
 
     --color-border: #1E293B;
 
-    --color-hover-primary: #2563EB;
+    --color-hover-primary: #EE7B4D;
     --color-hover-success: #15803D;
 }
 
