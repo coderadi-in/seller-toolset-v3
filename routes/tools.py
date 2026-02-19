@@ -49,8 +49,12 @@ def crop_pdf_route():
 def cr_calculator():
     return render_template("pages/cr_calculator.html")
 
-
 # & PRICE CALCULATOR ROUTE
 @tools.route("/price-calculator/")
 def price_calculator():
     return render_template("pages/price_calculator.html")
+
+# & ROI CALCULATOR ROUTE
+@tools.route('/roi-calculator/')
+def roi_calculator():
+    return render_template("pages/roi_calculator.html")

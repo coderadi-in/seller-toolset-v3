@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
+    <title>ROI Calculator | Seller Toolset</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/roi_calculator.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/roi_calculator.css') }}">
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+    <main class="main column gap-100">
+        <section class="calculator">
+            <section class="section flex gap-40">
+                <div class="left-panel column gap-20">
+                    <div class="stats-card column gap-10">
+                        <div class="heading column">
+                            <h3 class="h3">Product</h3>
+                            <hr class="divider">
+                        </div>
+
+                        <div class="body column gap-10">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productCost" class="row gap-10">
+                                    <span class="symbol fl-icon">currency_rupee</span>
+                                    <span class="text">Product Cost (₹)</span>
+                                </label>
+                                <input type="number" name="productCost" id="productCost" class="input"
+                                    placeholder="e.g.: 450">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="sellingPrice" class="row gap-10">
+                                    <span class="symbol fl-icon">sell</span>
+                                    <span class="text">Selling Price (₹)</span>
+                                </label>
+                                <input type="number" name="sellingPrice" id="sellingPrice" class="input"
+                                    placeholder="e.g.: 500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-card column gap-10">
+                        <div class="heading column">
+                            <h3 class="h3">Ads details</h3>
+                            <hr class="divider">
+                        </div>
+
+                        <div class="body column gap-10">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="adsCost" class="row gap-10">
+                                    <span class="symbol fl-icon">ad</span>
+                                    <span class="text">Ads Cost (₹)</span>
+                                </label>
+                                <input type="number" name="adsCost" id="adsCost" class="input" placeholder="e.g.: 100">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="revenueMade" class="row gap-10">
+                                    <span class="symbol fl-icon">finance</span>
+                                    <span class="text">Revenue Made (₹)</span>
+                                </label>
+                                <input type="number" name="revenueMade" id="revenueMade" class="input"
+                                    placeholder="e.g.: 1000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions res-row gap-10">
+                        <div class="btn fl" id="calcBtn">Calculate</div>
+                        <div class="btn ot" id="resBtn">Reset</div>
+                    </div>
+                </div>
+
+                <div class="right-panel column gap-20">
+                    <div class="stats-card column gap-10">
+                        <div class="heading column">
+                            <h3 class="h3">Summary</h3>
+                            <hr class="divider">
+                        </div>
+
+                        <div class="body column gap-10">
+                            <div class="input-row row h-sb gap-5">
+                                <div class="row gap-10">
+                                    <span class="symbol">trending_up</span>
+                                    <span class="text">ROI</span>
+                                </div>
+                                <span class="text" id="roiOutput">₹ 0.00</span>
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <div class="row gap-10">
+                                    <span class="symbol">timeline</span>
+                                    <span class="text">Profit margin</span>
+                                </div>
+                                <span class="text" id="profitMarginOutput">0.00</span>
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <div class="row gap-10">
+                                    <span class="symbol">trending_flat</span>
+                                    <span class="text">BE ROI</span>
+                                </div>
+                                <span class="text" id="beROIOutput">0.00</span>
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <div class="row gap-10">
+                                    <div class="symbol">difference</div>
+                                    <span class="text">ROI Difference</span>
+                                </div>
+                                <span class="text" id="roiDifferentOutput">0.00</span>
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <div class="row gap-10">
+                                    <span class="symbol">toc</span>
+                                    <span class="text">Overall</span>
+                                </div>
+                                <span class="text" id="overallOutput">NaN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <script type="module" src="{{ url_for('static', filename='js/pages/roi_calculator.js') }}"></script>
+    </main>
+</body>
+
+</html>

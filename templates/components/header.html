@@ -7,17 +7,13 @@
                 <span class="symbol menu-btn">menu</span>
 
                 <a href="/" class="link main-link">
-                    <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" alt="Toolset logo"
+                    <img src="{{ url_for('static', filename='assets/icons/header_logo.png') }}" alt="Toolset logo"
                         class="logo">
                 </a>
             </div>
 
             <ul class="navigation list row gap-20">
-                <button class="btn link" id="theme-control"><span class="symbol">contrast</span></button>
-                <li><a href="/tools/pdf-cropper/" class="link"><span class="mini">CROP PDF</span></a></li>
-                <li><a href="/tools/cr-calculator/" class="link"><span class="mini">CUSTOM RETURN CALCULATOR</span></a>
-                </li>
-                <li><a href="/tools/price-calculator/" class="link"><span class="mini">PRICE CALCULATOR</span></a></li>
+                <li><a href="/#tools" class="link"><span class="mini">EXPLORE TOOLS</span></a></li>
             </ul>
         </div>
 
@@ -26,14 +22,27 @@
 </header>
 
 <nav class="nav column h-sb">
-    <span class="symbol menu-btn">close</span>
+    <div class="menu-btn row gap-10">
+        <span class="symbol">close</span>
+        <span class="text">Close</span>
+    </div>
 
     <ul class="navigation list column gap-20">
         <li><span class="text title">MARKRTD E-COM TOOLS</span></li>
         <li><a href="/tools/pdf-cropper/" class="link"><span class="mini">CROP PDF</span></a></li>
         <li><a href="/tools/cr-calculator/" class="link"><span class="mini">CUSTOM RETURN CALCULATOR</span></a></li>
         <li><a href="/tools/price-calculator/" class="link"><span class="mini">PRICE CALCULATOR</span></a></li>
+        <li><a href="/tools/roi-calculator/" class="link"><span class="mini">ROI CALCULATOR</span></a></li>
     </ul>
+
+    <div class="navigation column gap-20">
+        <span class="text title">MARKRTD SETTINGS</span>
+
+        <div class="btn row gap-10 h-en" id="theme-control">
+            <span class="symbol">contrast</span>
+            <span class="text">Theme</span>
+        </div>
+    </div>
 
     <span class="mini">&copy; MARKRTD 2026</span>
 </nav>

@@ -1,9 +1,11 @@
 /* | HEADER */
 .header .section {padding: 20px;}
-.header .menu-btn {display: none;}
 .menu-btn {cursor: pointer;}
 
 .header .logo {
+    width: 100%;
+    height: 50px;
+    aspect-ratio: auto;
     transition: 
         transform 0.3s ease-in,
         box-shadow 0.3s ease-in;
@@ -14,9 +16,11 @@
     box-shadow: 5px 5px #FFF;
 }
 
-.header .btn {
+.header .btn,
+.nav .btn {
     padding: 0;
     background-color: transparent;
+    border-radius: 0;
 }
 
 /* | NAV */
@@ -55,9 +59,4 @@
 
 .nav.show li {
     transform: translateX(0);
-}
-
-@media (max-width: 768px) {
-    .header .menu-btn {display: inline;}
-    .header li {display: none;}
 }

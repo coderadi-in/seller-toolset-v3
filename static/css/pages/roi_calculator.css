@@ -1,7 +1,7 @@
-/* | LEFT PANEL */
-.left-panel {
-    grid-template-columns: repeat(2, 1fr);
-}
+/* | PANELS [START] */
+.left-panel,
+.right-panel {flex: 1;}
+/* | PANELS [END] */
 
 /* | STATS-CARDS [START] */
 .stats-card {
@@ -32,16 +32,14 @@
 }
 /* | STATS-CARD [END] */
 
-/* | RIGHT PANEL STATS CARD [START] */
-.right-panel .input-row .output.text {
-    color: var(--color-accent-green);
-}
+/* | FIN [START] */
+.p {color: var(--color-accent-green) !important;}
+.l {color: var(--color-accent-red) !important;}
+.be {color: var(--color-text-main);}
 
-/* & RESPONSIVE VERSIONS */
+/* & RESPONSIVENESS` */
 @media (max-width: 1024px) {
-    .left-panel {
-        grid-template-columns: 1fr;
-    }
+    .calculator .section {flex-direction: column;}
 }
 
 @media (max-width: 568px) {
