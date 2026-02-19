@@ -60,3 +60,7 @@
 .nav.show li {
     transform: translateX(0);
 }
+
+@media (max-width: 425px) {
+    .header .navigation {display: none;}
+}

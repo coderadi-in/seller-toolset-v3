@@ -3,9 +3,12 @@
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 import coderadi.cropper as cropper
+from coderadi.fba import generate_barcode
+from coderadi.fba import LabelGridPDFService as LabelGenerator
 
-# ! INITIALIZING TOOLS ROUTER
+# ! INITIALIZING TOOLS ROUTER & PLUGINS
 tools = Blueprint("tools", __name__, url_prefix="/tools")
+label_generator = LabelGenerator()
 
 # & PDF CROPPER ROUTE
 @tools.route("/pdf-cropper/")
@@ -58,3 +61,40 @@ def price_calculator():
 @tools.route('/roi-calculator/')
 def roi_calculator():
     return render_template("pages/roi_calculator.html")
+
+# & FBA GENERATOR ROUTE
+@tools.route('/fba-generator/')
+def fba_generator():
+    return render_template("pages/fba_generator.html")
+
+# | FBA GENERATE HANDLER ROUTE
+@tools.route('/fba-generator/generate', methods=['POST'])
+def generate_fba():
+    # ACCESSING FORM DATA
+    product_code = request.form.get('productCode')
+    product_name = request.form.get('productName')
+    product_price = request.form.get('productPrice')
+    seller_credential = request.form.get('sellerCredential')
+
+    # FORM VALIDATION
+    if (not product_code) or (not product_name) or (not product_price) or (not seller_credential):
+        return redirect(url_for('tools.fba_generator'))
+    
+
+    # GENERATE BARCODE & LABEL
+    barcode = generate_barcode(product_code)
+
+    labels = [{
+        "barcode": barcode,
+        "lines": [product_code, product_name, product_price, seller_credential]
+    } for _ in range(40)]
+
+    pdf = label_generator.build_sheet(labels)
+
+    # RETURN OUTPUT
+    return send_file(
+        pdf,
+        as_attachment=True,
+        download_name="fba_label.pdf",
+        mimetype="application/pdf"
+    )

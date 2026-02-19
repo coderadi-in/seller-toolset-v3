@@ -1,0 +1,32 @@
+/* | STATS-CARDS [START] */
+.stats-card {
+    background-color: var(--color-bg-card);
+    border-radius: 8px;
+}
+
+.stats-card .heading .h3 {
+    padding: 20px;
+}
+
+.stats-card .heading .symbol {
+    padding: 20px;
+}
+
+.stats-card .body {
+    padding: 20px;
+}
+
+.stats-card .input-row label,
+.stats-card .input-row input,
+.stats-card .input-row .output-data {
+    width: 100%;
+}
+/* | STATS-CARD [END] */
+
+/* & RESPONSIVENESS */
+@media (max-width: 568px) {
+    .stats-card .input-row {
+        flex-direction: column;
+        align-items: start;
+    }
+}

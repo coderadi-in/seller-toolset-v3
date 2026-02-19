@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
+    <title>FBA Generator | Seller toolset</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/fba_generator.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/fba_generator.css') }}">
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+    <main class="main column gap-100">
+        <section class="generator">
+            <section class="section">
+                <form action="/tools/fba-generator/generate" method="post" class="form column gap-20">
+                    <div class="stats-card column gap-10">
+                        <div class="heading column">
+                            <h3 class="h3">FBA details</h3>
+                            <hr class="divider">
+                        </div>
+
+                        <div class="body column gap-10">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productCode" class="row gap-10">
+                                    <span class="symbol">barcode</span>
+                                    <span class="text">Product Id</span>
+                                </label>
+                                <input required type="text" name="productCode" id="productCode" class="input"
+                                    placeholder="Enter product code">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productName" class="row gap-10">
+                                    <span class="symbol">label</span>
+                                    <span class="text">Product Title</span>
+                                </label>
+                                <input required type="text" name="productName" id="productName" class="input"
+                                    placeholder="Enter product name">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productPrice" class="row gap-10">
+                                    <span class="symbol">attach_money</span>
+                                    <span class="text">M.R.P.</span>
+                                </label>
+                                <input required type="text" name="productPrice" id="productPrice" class="input"
+                                    placeholder="Enter product price">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="sellerCredential" class="row gap-10">
+                                    <span class="symbol">verified</span>
+                                    <span class="text">Email/Website</span>
+                                </label>
+                                <input required type="text" name="sellerCredential" id="sellerCredential" class="input"
+                                    placeholder="Enter email/website">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions res-row gap-10">
+                        <button type="submit" class="btn fl" id="genBtn">
+                            <span class="mini title">Generate FBA</span>
+                        </button>
+
+                        <button type="reset" class="btn ot">
+                            <span class="mini title">Reset data</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="{{ url_for('static', filename='js/pages/fba_generator.js') }}"></script>
+</body>
+
+</html>
