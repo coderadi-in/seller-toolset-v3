@@ -1,3 +1,13 @@
+/* & ANIMATION VALUES */
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+.rotate {
+    animation: rotate 2s infinite;
+}
+
 /* | STATS-CARDS [START] */
 .stats-card {
     background-color: var(--color-bg-card);

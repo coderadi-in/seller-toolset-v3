@@ -4,10 +4,13 @@ coderadi &bull; Manages all FBA generation functions
 
 # ? IMPORTS
 from io import BytesIO
+
 import barcode
 from barcode.writer import ImageWriter
+
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
+from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4
 
 # * FUNCTION TO GENERATE BARCODE
@@ -29,7 +32,12 @@ def generate_barcode(code: str) -> BytesIO:
 
     return buffer
 
-# & LABEL GRID GENERATION SERVICE
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
+from io import BytesIO
+
+
 class LabelGridPDFService:
 
     COLS = 4
@@ -71,66 +79,32 @@ class LabelGridPDFService:
 
 
     def _draw_single_label(self, c, x, y, w, h, label):
-        """
-        Draws ONE label inside its cell
-        """
-
         padding = 10
-
-        # Optional border (great for debugging layout)
         c.rect(x, y, w, h)
 
-        # ---- Text ----
-        text_y = y + h - 20
+        # -------------------------
+        # BARCODE AT TOP
+        # -------------------------
+        barcode_height = 40
+
+        barcode_img = ImageReader(label["barcode"])
+
+        c.drawImage(
+            barcode_img,
+            x + padding,
+            y + h - barcode_height - padding,
+            width=w - 2 * padding,
+            height=barcode_height,
+            preserveAspectRatio=True
+        )
+
+        # -------------------------
+        # TEXT BELOW BARCODE
+        # -------------------------
+        text_y = y + h - barcode_height - 10
 
         c.setFont("Helvetica", 9)
 
         for line in label["lines"]:
             c.drawString(x + padding, text_y, line)
             text_y -= 12
-
-        # ---- Barcode ----
-        barcode_img = ImageReader(label["barcode"])
-
-        c.drawImage(
-            barcode_img,
-            x + padding + 20,
-            y + 10,
-            width=w - 2 * padding,
-            height=35,
-            preserveAspectRatio=True
-        )
-
-# * FUNCTION TO GENERATE FBA LABEL
-def generate_fba_label(content: list[str], barcode: BytesIO) -> BytesIO:
-    '''
-    Generates FBA label PDF
-
-    :param content: A list of texts to add in FBA label.
-    :param barcode: The barcode to add in text.
-    :rtype: io.BytesIO
-    '''
-
-    buffer = BytesIO()
-    c = canvas.Canvas(buffer, pagesize=A4)
-    width, height = A4
-
-    # TEXT
-    y = height - 50
-    for line in content:
-        c.drawString(50, y, line)
-        y -= 20
-
-    # BARCODE
-    barcode_image = ImageReader(barcode)
-    c.drawImage(
-        barcode_image, 50, y- 120,
-        width=300, height=80
-    )
-
-    c.showPage()
-    c.save()
-
-    buffer.seek(0)
-
-    return buffer

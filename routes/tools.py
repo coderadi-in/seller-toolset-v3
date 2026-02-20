@@ -83,13 +83,16 @@ def generate_fba():
 
     # GENERATE BARCODE & LABEL
     barcode = generate_barcode(product_code)
-
-    labels = [{
-        "barcode": barcode,
-        "lines": [product_code, product_name, product_price, seller_credential]
-    } for _ in range(40)]
-
-    pdf = label_generator.build_sheet(labels)
+    pdf = label_generator.build_sheet([
+        {
+            "barcode": barcode,
+            "lines": [
+                product_price,
+                product_name,
+                seller_credential,
+            ]
+        } for _ in range(40)
+    ])
 
     # RETURN OUTPUT
     return send_file(

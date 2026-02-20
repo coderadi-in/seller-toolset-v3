@@ -122,4 +122,7 @@ resBtn.addEventListener('click', () => {
     beROIOutput.textContent = '0.00'
     roiDifferentOutput.textContent = '0.00'
     overallOutput.textContent = 'NaN'
+
+    roiDifferentOutput.classList.remove('p', 'l', 'be');
+    overallOutput.classList.remove('p', 'l', 'be');
 })
