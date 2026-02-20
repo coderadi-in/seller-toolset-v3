@@ -15,14 +15,6 @@ observer.observe(calculatorSection);
 // FUNCTIONS
 // ==================================================
 
-// * FUNCTION TO CALCULATE ROI
-function calculateROI(
-    adsCost,
-    revenueMade
-) {
-    return revenueMade / adsCost;
-}
-
 // * FUNCTION TO CALCULATE PROFIT-MARGIN
 function calculateProfitMargin(
     productCost,
@@ -75,8 +67,7 @@ function calculateDiff(
 // ? INPUTS
 const productCost = document.getElementById("productCost");
 const sellingPrice = document.getElementById("sellingPrice");
-const adsCost = document.getElementById("adsCost");
-const revenueMade = document.getElementById("revenueMade");
+const roiMade = document.getElementById("roiMade");
 
 // ? OUTPUTS
 const roiOutput = document.getElementById("roiOutput");
@@ -98,17 +89,15 @@ calcBtn.addEventListener('click', () => {
     // FETCH VALUE
     const productCostValue = Number(productCost.value) || 0;
     const sellingPriceValue = Number(sellingPrice.value) || 0;
-    const adsCostValue = Number(adsCost.value) || 0;
-    const revenueMadeValue = Number(revenueMade.value) || 0;
+    const roiMadeValue = Number(roiMade.value) || 0;
 
     // IMPLEMENT MATH
-    let calculatedROI = calculateROI(adsCostValue, revenueMadeValue);
     let calculatedPM = calculateProfitMargin(productCostValue, sellingPriceValue);
     let calculatedBEROI = calculateBEROI(calculatedPM);
-    let calculatedSummary = calculateDiff(calculatedROI, calculatedBEROI);
+    let calculatedSummary = calculateDiff(roiMadeValue, calculatedBEROI);
 
     // UPDATE OUTPUT
-    roiOutput.textContent = calculatedROI.toFixed(2);
+    roiOutput.textContent = roiMadeValue.toFixed(2);
     profitMarginOutput.textContent = calculatedPM.toFixed(2);
     beROIOutput.textContent = calculatedBEROI.toFixed(2);
     roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
