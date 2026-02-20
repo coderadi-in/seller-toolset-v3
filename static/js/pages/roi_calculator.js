@@ -20,14 +20,16 @@ function calculateProfitMargin(
     productCost,
     sellingPrice
 ) {
-    return (sellingPrice - productCost) / sellingPrice;
+    let profitMargin = (sellingPrice - productCost) / sellingPrice;
+    return isNaN(profitMargin) ? 0 : profitMargin.toFixed(2);
 }
 
 // * FUNCTION TO CALCULATE BREAK-EVEN ROI
 function calculateBEROI(
     profitMargin
 ) {
-    return 1 / profitMargin
+    let beROI = 1 / profitMargin;
+    return isNaN(beROI) ? 0 : beROI.toFixed(2);
 }
 
 // * FUNCTION TO CALCULATE ROI DIFF. AND SUMMARY
@@ -98,11 +100,13 @@ calcBtn.addEventListener('click', () => {
 
     // UPDATE OUTPUT
     roiOutput.textContent = roiMadeValue.toFixed(2);
-    profitMarginOutput.textContent = calculatedPM.toFixed(2);
-    beROIOutput.textContent = calculatedBEROI.toFixed(2);
+    profitMarginOutput.textContent = calculatedPM;
+    beROIOutput.textContent = calculatedBEROI;
     roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
     overallOutput.textContent = calculatedSummary.summary;
 
+    roiDifferentOutput.classList.remove('p', 'l', 'be');
+    overallOutput.classList.remove('p', 'l', 'be');
     roiDifferentOutput.classList.add(calculatedSummary.classToAdd);
     overallOutput.classList.add(calculatedSummary.classToAdd);
 })
@@ -111,8 +115,7 @@ calcBtn.addEventListener('click', () => {
 resBtn.addEventListener('click', () => {
     productCost.value = '';
     sellingPrice.value = '';
-    adsCost.value = '';
-    revenueMade.value = '';
+    roiMade.value = '';
 
     roiOutput.textContent = '\u20B9 0.00'
     profitMarginOutput.textContent = '0.00'
