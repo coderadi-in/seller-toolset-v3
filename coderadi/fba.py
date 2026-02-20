@@ -101,7 +101,7 @@ class LabelGridPDFService:
         # -------------------------
         # TEXT BELOW BARCODE
         # -------------------------
-        text_y = y + h - barcode_height - 10
+        text_y = y + h - barcode_height - 15
 
         c.setFont("Helvetica", 9)
 

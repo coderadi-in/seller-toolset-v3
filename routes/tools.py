@@ -76,6 +76,9 @@ def generate_fba():
     product_price = request.form.get('productPrice')
     seller_credential = request.form.get('sellerCredential')
 
+    # BEAUTIFY PRODUCT PRICE
+    product_price = f"MRP {product_price}"
+
     # FORM VALIDATION
     if (not product_code) or (not product_name) or (not product_price) or (not seller_credential):
         return redirect(url_for('tools.fba_generator'))
