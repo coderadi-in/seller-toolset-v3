@@ -1,14 +1,26 @@
 """coderadi &bull; Tools routing for the project."""
 
+# ==================================================
+# IMPORTS
+# ==================================================
+
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 import coderadi.cropper as cropper
 from coderadi.fba import generate_barcode
 from coderadi.fba import LabelGridPDFService as LabelGenerator
 
+# ==================================================
+# INITIALIZATIONS
+# ==================================================
+
 # ! INITIALIZING TOOLS ROUTER & PLUGINS
 tools = Blueprint("tools", __name__, url_prefix="/tools")
 label_generator = LabelGenerator()
+
+# ==================================================
+# PDF CROPPER
+# ==================================================
 
 # & PDF CROPPER ROUTE
 @tools.route("/pdf-cropper/")
@@ -46,6 +58,9 @@ def crop_pdf_route():
         mimetype="application/pdf",
     )
 
+# ==================================================
+# SINGLE-ROUTED TOOLS
+# ==================================================
 
 # & CR CALCULATOR ROUTE
 @tools.route("/cr-calculator/")
@@ -61,6 +76,10 @@ def price_calculator():
 @tools.route('/roi-calculator/')
 def roi_calculator():
     return render_template("pages/roi_calculator.html")
+
+# ==================================================
+# FBA GENERATION
+# ==================================================
 
 # & FBA GENERATOR ROUTE
 @tools.route('/fba-generator/')
@@ -104,3 +123,12 @@ def generate_fba():
         download_name="fba_label.pdf",
         mimetype="application/pdf"
     )
+
+# ==================================================
+# ORDER TRACKING
+# ==================================================
+
+# & ORDER-TRACKER ROUTE
+@tools.route('/order-tracker/')
+def order_tracker():
+    return render_template('pages/order_tracker.html')
