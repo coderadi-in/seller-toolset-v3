@@ -2,7 +2,8 @@
 import { observer } from '../base/observer.js';
 
 // ? GETTING INPUTS
-const totalOrders = document.getElementById("totalOrders");
+// const totalOrders = document.getElementById("totalOrders");
+const totalOrders = 100;
 const totalReturn = document.getElementById("totalReturn");
 const returnLoss = document.getElementById("returnLoss");
 const packagingLoss = document.getElementById("packagingLoss");
@@ -55,7 +56,7 @@ function calculateRTOLoss(
 // & LOSS CALCULATION FUNCTIONALITY
 calculateBtn.addEventListener('click', () => {
     // GET ALL INPUT VALUES
-    let totalOrdersValue = Number(totalOrders.value) || 0;
+    let totalOrdersValue = totalOrders;
     let totalReturnValue = Number(totalReturn.value) || 0;
     let returnLossValue = Number(returnLoss.value) || 0;
     let packagingLossValue = Number(packagingLoss.value) || 0;

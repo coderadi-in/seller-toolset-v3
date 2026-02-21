@@ -15,15 +15,6 @@ observer.observe(calculatorSection);
 // FUNCTIONS
 // ==================================================
 
-// * FUNCTION TO CALCULATE PROFIT-MARGIN
-function calculateProfitMargin(
-    productCost,
-    sellingPrice
-) {
-    let profitMargin = (sellingPrice - productCost) / sellingPrice;
-    return isNaN(profitMargin) ? 0 : profitMargin.toFixed(2);
-}
-
 // * FUNCTION TO CALCULATE BREAK-EVEN ROI
 function calculateBEROI(
     profitMargin
@@ -67,7 +58,7 @@ function calculateDiff(
 // ==================================================
 
 // ? INPUTS
-const productCost = document.getElementById("productCost");
+const profitMargin = document.getElementById("profitMargin");
 const sellingPrice = document.getElementById("sellingPrice");
 const roiMade = document.getElementById("roiMade");
 
@@ -89,18 +80,17 @@ const resBtn = document.getElementById("resBtn");
 // & EVENT LISTENER FOR CALCULATE-BTN CLICK
 calcBtn.addEventListener('click', () => {
     // FETCH VALUE
-    const productCostValue = Number(productCost.value) || 0;
+    const profitMarginValue = Number(profitMargin.value) || 0;
     const sellingPriceValue = Number(sellingPrice.value) || 0;
     const roiMadeValue = Number(roiMade.value) || 0;
 
     // IMPLEMENT MATH
-    let calculatedPM = calculateProfitMargin(productCostValue, sellingPriceValue);
-    let calculatedBEROI = calculateBEROI(calculatedPM);
+    let calculatedBEROI = calculateBEROI(profitMarginValue);
     let calculatedSummary = calculateDiff(roiMadeValue, calculatedBEROI);
 
     // UPDATE OUTPUT
     roiOutput.textContent = roiMadeValue.toFixed(2);
-    profitMarginOutput.textContent = calculatedPM;
+    profitMarginOutput.textContent = profitMarginValue.toFixed(2);
     beROIOutput.textContent = calculatedBEROI;
     roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
     overallOutput.textContent = calculatedSummary.summary;
