@@ -15,6 +15,15 @@ observer.observe(calculatorSection);
 // FUNCTIONS
 // ==================================================
 
+// * FUNCTION TO CALCULATE PROFIT MARGIN
+function calculatePM(
+    profitMargin,
+    sellingPrice
+) {
+    let value = (profitMargin / sellingPrice);
+    return isNaN(value) ? 0 : value.toFixed(2);
+}
+
 // * FUNCTION TO CALCULATE BREAK-EVEN ROI
 function calculateBEROI(
     profitMargin
@@ -85,12 +94,13 @@ calcBtn.addEventListener('click', () => {
     const roiMadeValue = Number(roiMade.value) || 0;
 
     // IMPLEMENT MATH
-    let calculatedBEROI = calculateBEROI(profitMarginValue);
+    let calculatedPM = calculatePM(profitMarginValue, sellingPriceValue);
+    let calculatedBEROI = calculateBEROI(calculatedPM);
     let calculatedSummary = calculateDiff(roiMadeValue, calculatedBEROI);
 
-    // UPDATE OUTPUT
+    // UPDATE OUTPUTw
     roiOutput.textContent = roiMadeValue.toFixed(2);
-    profitMarginOutput.textContent = profitMarginValue.toFixed(2);
+    profitMarginOutput.textContent = calculatedPM;
     beROIOutput.textContent = calculatedBEROI;
     roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
     overallOutput.textContent = calculatedSummary.summary;
