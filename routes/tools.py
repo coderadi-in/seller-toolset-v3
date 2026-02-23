@@ -172,6 +172,6 @@ def generate_batch():
     return send_file(
         pdf,
         as_attachment=True,
-        download_name="fba_label.pdf",
+        download_name="batch_label.pdf",
         mimetype="application/pdf"
     )
