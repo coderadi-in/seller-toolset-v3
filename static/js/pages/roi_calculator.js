@@ -72,8 +72,6 @@ const sellingPrice = document.getElementById("sellingPrice");
 const roiMade = document.getElementById("roiMade");
 
 // ? OUTPUTS
-const roiOutput = document.getElementById("roiOutput");
-const profitMarginOutput = document.getElementById("profitMarginOutput");
 const beROIOutput = document.getElementById("beROIOutput");
 const roiDifferentOutput = document.getElementById("roiDifferentOutput");
 const overallOutput = document.getElementById("overallOutput");
@@ -98,9 +96,7 @@ calcBtn.addEventListener('click', () => {
     let calculatedBEROI = calculateBEROI(calculatedPM);
     let calculatedSummary = calculateDiff(roiMadeValue, calculatedBEROI);
 
-    // UPDATE OUTPUTw
-    roiOutput.textContent = roiMadeValue.toFixed(2);
-    profitMarginOutput.textContent = calculatedPM;
+    // UPDATE OUTPUT
     beROIOutput.textContent = calculatedBEROI;
     roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
     overallOutput.textContent = calculatedSummary.summary;
@@ -117,8 +113,6 @@ resBtn.addEventListener('click', () => {
     sellingPrice.value = '';
     roiMade.value = '';
 
-    roiOutput.textContent = '\u20B9 0.00'
-    profitMarginOutput.textContent = '0.00'
     beROIOutput.textContent = '0.00'
     roiDifferentOutput.textContent = '0.00'
     overallOutput.textContent = 'NaN'
