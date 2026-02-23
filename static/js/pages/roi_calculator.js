@@ -44,13 +44,13 @@ function calculateDiff(
 
     // CALCULATE SUMMARY
     if (roi > beROI) {
-        summary = "PROFIT";
+        summary = "Profitable ROI";
         classToAdd = "p";
     } else if (roi < beROI) {
-        summary = "LOSS";
+        summary = "Loss Making ROI";
         classToAdd = "l";
     } else {
-        summary = "BREAK-EVEN";
+        summary = "Needs Optimization (No profit No Loss)";
         classToAdd = "be";
     }
 
@@ -72,8 +72,6 @@ const sellingPrice = document.getElementById("sellingPrice");
 const roiMade = document.getElementById("roiMade");
 
 // ? OUTPUTS
-const beROIOutput = document.getElementById("beROIOutput");
-const roiDifferentOutput = document.getElementById("roiDifferentOutput");
 const overallOutput = document.getElementById("overallOutput");
 
 // ? ACTIONS
@@ -97,13 +95,9 @@ calcBtn.addEventListener('click', () => {
     let calculatedSummary = calculateDiff(roiMadeValue, calculatedBEROI);
 
     // UPDATE OUTPUT
-    beROIOutput.textContent = calculatedBEROI;
-    roiDifferentOutput.textContent = calculatedSummary.diff.toFixed(2);
     overallOutput.textContent = calculatedSummary.summary;
 
-    roiDifferentOutput.classList.remove('p', 'l', 'be');
     overallOutput.classList.remove('p', 'l', 'be');
-    roiDifferentOutput.classList.add(calculatedSummary.classToAdd);
     overallOutput.classList.add(calculatedSummary.classToAdd);
 })
 
@@ -113,10 +107,6 @@ resBtn.addEventListener('click', () => {
     sellingPrice.value = '';
     roiMade.value = '';
 
-    beROIOutput.textContent = '0.00'
-    roiDifferentOutput.textContent = '0.00'
     overallOutput.textContent = 'NaN'
-
-    roiDifferentOutput.classList.remove('p', 'l', 'be');
     overallOutput.classList.remove('p', 'l', 'be');
 })
