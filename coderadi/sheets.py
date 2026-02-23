@@ -39,11 +39,7 @@ from io import BytesIO
 
 
 class LabelGridPDFService:
-
-    COLS = 4
-    ROWS = 10
-
-    def build_sheet(self, labels: list[dict]) -> BytesIO:
+    def build_sheet(self, labels: list[dict], grid: tuple[str] = (10, 4), outlined: bool = True) -> BytesIO:
         """
         labels = [
             {"code": "ABC123", "lines": ["Product A", "₹99"]},
@@ -51,25 +47,27 @@ class LabelGridPDFService:
         ]
         """
 
+        rows, cols = grid
+
         pdf_buffer = BytesIO()
         c = canvas.Canvas(pdf_buffer, pagesize=A4)
 
         page_width, page_height = A4
 
-        cell_w = page_width / self.COLS
-        cell_h = page_height / self.ROWS
+        cell_w = page_width / cols
+        cell_h = page_height / rows
 
         for i, label in enumerate(labels):
-            col = i % self.COLS
-            row = i // self.COLS
+            col = i % cols
+            row = i // cols
 
-            if row >= self.ROWS:
+            if row >= rows:
                 break  # max 40
 
             x = col * cell_w
             y = page_height - ((row + 1) * cell_h)
 
-            self._draw_single_label(c, x, y, cell_w, cell_h, label)
+            self._draw_single_label(c, x, y, cell_w, cell_h, label, outlined)
 
         c.showPage()
         c.save()
@@ -78,9 +76,10 @@ class LabelGridPDFService:
         return pdf_buffer
 
 
-    def _draw_single_label(self, c, x, y, w, h, label):
+    def _draw_single_label(self, c, x, y, w, h, label, outlined: bool = True):
         padding = 10
-        c.rect(x, y, w, h)
+        
+        if (outlined): c.rect(x, y, w, h)
 
         # -------------------------
         # BARCODE AT TOP

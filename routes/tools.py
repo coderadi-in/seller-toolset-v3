@@ -6,9 +6,10 @@
 
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
+from datetime import datetime
 import coderadi.cropper as cropper
-from coderadi.fba import generate_barcode
-from coderadi.fba import LabelGridPDFService as LabelGenerator
+from coderadi.sheets import generate_barcode
+from coderadi.sheets import LabelGridPDFService as LabelGenerator
 
 # ==================================================
 # INITIALIZATIONS
@@ -102,7 +103,6 @@ def generate_fba():
     if (not product_code) or (not product_name) or (not product_price) or (not seller_credential):
         return redirect(url_for('tools.fba_generator'))
     
-
     # GENERATE BARCODE & LABEL
     barcode = generate_barcode(product_code)
     pdf = label_generator.build_sheet([
@@ -125,10 +125,53 @@ def generate_fba():
     )
 
 # ==================================================
-# ORDER TRACKING
+# BATCH GENERATION
 # ==================================================
 
-# & ORDER-TRACKER ROUTE
-@tools.route('/order-tracker/')
-def order_tracker():
-    return render_template('pages/order_tracker.html')
+# & BATCH-GENERATOR ROUTE
+@tools.route('/batch-generator/')
+def batch_generator():
+    return render_template('pages/batch_generator.html')
+
+# | BATCH-GENERATION HANDLING ROUTE
+@tools.route('/batch-generator/generate', methods=['POST'])
+def generate_batch():
+    # ACCESS FORM DATA
+    product_code = request.form.get('productCode')
+    product_variant = request.form.get('productVariant')
+    manufacture_date = request.form.get('manufactureDate')
+    expiry_date = request.form.get('expiryDate')
+    batch_number = request.form.get('batchNumber')
+
+    # DATE FORMATION
+    manufacture_date_obj = datetime.strptime(manufacture_date, "%Y-%m-%d")
+    expiry_date_obj = datetime.strptime(expiry_date, "%Y-%m-%d")
+    formatted_manufacture_date = manufacture_date_obj.strftime("%d/%m/%Y")
+    formatted_expiry_date = expiry_date_obj.strftime("%d/%m/%Y")
+
+    # BEAUTIFICATION
+    manufacture_date = f"M.F.G.: {formatted_manufacture_date}"
+    expiry_date = f"E.X.P: {formatted_expiry_date}"
+    batch_number = f"Batch no.: {batch_number}"
+
+    # GENERATE BARCODE & LABEL
+    barcode = generate_barcode(product_code)
+    pdf = label_generator.build_sheet([
+        {
+            "barcode": barcode,
+            "lines": [
+                product_variant,
+                manufacture_date,
+                expiry_date,
+                batch_number
+            ]
+        } for _ in range(36)
+    ], grid=(9, 4))
+
+    # RETURN OUTPUT
+    return send_file(
+        pdf,
+        as_attachment=True,
+        download_name="fba_label.pdf",
+        mimetype="application/pdf"
+    )

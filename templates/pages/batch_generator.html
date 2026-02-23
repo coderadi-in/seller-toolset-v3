@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
+    <title>FBA Generator | Seller toolset</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/batch_generator.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/batch_generator.css') }}">
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+    <main class="main column gap-100">
+        <section class="generator">
+            <section class="section">
+                <form action="/tools/batch-generator/generate" method="post" class="form column gap-20">
+                    <div class="stats-card column gap-10">
+                        <div class="heading column">
+                            <h3 class="h3">Product details</h3>
+                            <hr class="divider">
+                        </div>
+
+                        <div class="body column gap-10">
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productCode" class="row gap-10">
+                                    <span class="symbol">barcode</span>
+                                    <span class="text">SKU Id</span>
+                                </label>
+                                <input required type="text" name="productCode" id="productCode" class="input"
+                                    placeholder="Enter product code">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="productVariant" class="row gap-10">
+                                    <span class="symbol">category</span>
+                                    <span class="text">Variant</span>
+                                </label>
+                                <input required type="text" name="productVariant" id="productVariant" class="input"
+                                    placeholder="Enter variant (e.g.: 500gm/500l/etc.)">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="manufactureDate" class="row gap-10">
+                                    <span class="symbol">date_range</span>
+                                    <span class="text">M.F.G.</span>
+                                </label>
+                                <input required type="date" name="manufactureDate" id="manufactureDate" class="input">
+                            </div>
+                            <hr class="divider">
+
+                            <div class="input-row row h-sb gap-5">
+                                <label for="expiryDate" class="row gap-10">
+                                    <span class="symbol">date_range</span>
+                                    <span class="text">E.X.P.</span>
+                                </label>
+                                <input required type="date" name="expiryDate" id="expiryDate" class="input">
+                            </div>
+                            <hr class="divider">
+                            
+                            <div class="input-row row h-sb gap-5">
+                                <label for="batchNumber" class="row gap-10">
+                                    <span class="symbol">batch_prediction</span>
+                                    <span class="text">Batch no.</span>
+                                </label>
+                                <input required type="text" name="batchNumber" id="batchNumber" class="input"
+                                    placeholder="Enter batch no.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions res-row gap-10">
+                        <button type="submit" class="btn fl" id="genBtn">
+                            <span class="mini title">Generate Batch</span>
+                        </button>
+
+                        <button type="reset" class="btn ot">
+                            <span class="mini title">Reset data</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="{{ url_for('static', filename='js/pages/batch_generator.js') }}"></script>
+</body>
+
+</html>

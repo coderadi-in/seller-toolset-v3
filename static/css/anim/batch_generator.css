@@ -1,0 +1,19 @@
+/* | GENERATOR [START] */
+.generator .stats-card,
+.generator .actions {
+    transform: translateY(100px);
+    opacity: 0;
+    transition:
+        transform 0.6s ease-in-out,
+        opacity 0.6s ease-in-out;
+}
+
+.generator.visible .stats-card,
+.generator.visible .actions {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.generator .stats-card:nth-child(1) {transition-delay: 0ms;}
+.generator .actions {transition-delay: 100ms;}
+/* | GENERATOR [END] */
