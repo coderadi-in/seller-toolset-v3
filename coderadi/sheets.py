@@ -155,7 +155,7 @@ class LabelGridPDFService:
         c.setFont("Helvetica", 9)
 
         c.drawString(x + padding, text_y, dataset["id"])
-        c.drawString(x + padding + 75, text_y, dataset["variant"])
+        c.drawString(x + padding + 100, text_y, dataset["variant"])
         
         text_y -= 12
         c.setFont("Helvetica-Bold", 9)
