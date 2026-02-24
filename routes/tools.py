@@ -105,7 +105,7 @@ def generate_fba():
     
     # GENERATE BARCODE & LABEL
     barcode = generate_barcode(product_code)
-    pdf = label_generator.build_sheet([
+    pdf = label_generator.build_sheet(label_type="fba", labels=[
         {
             "barcode": barcode,
             "lines": [
@@ -139,6 +139,7 @@ def generate_batch():
     # ACCESS FORM DATA
     product_code = request.form.get('productCode')
     product_variant = request.form.get('productVariant')
+    product_price = request.form.get('productPrice')
     manufacture_date = request.form.get('manufactureDate')
     expiry_date = request.form.get('expiryDate')
     batch_number = request.form.get('batchNumber')
@@ -150,23 +151,26 @@ def generate_batch():
     formatted_expiry_date = expiry_date_obj.strftime("%d/%m/%Y")
 
     # BEAUTIFICATION
+    product_price = f"M.R.P.: {product_price}"
     manufacture_date = f"M.F.G.: {formatted_manufacture_date}"
-    expiry_date = f"E.X.P: {formatted_expiry_date}"
+    expiry_date = f"E.X.P: Best before {formatted_expiry_date}"
     batch_number = f"Batch no.: {batch_number}"
 
     # GENERATE BARCODE & LABEL
-    barcode = generate_barcode(product_code)
-    pdf = label_generator.build_sheet([
+    barcode = generate_barcode(product_code, with_label=False)
+    pdf = label_generator.build_sheet(label_type="batch", labels=[
         {
             "barcode": barcode,
-            "lines": [
-                product_variant,
-                manufacture_date,
-                expiry_date,
-                batch_number
-            ]
+            "lines": {
+                "id": product_code,
+                "variant": product_variant,
+                "price": product_price,
+                "batch": batch_number,
+                "mfd": manufacture_date,
+                "exp": expiry_date
+            }
         } for _ in range(36)
-    ], grid=(9, 4))
+    ], grid=(9, 3))
 
     # RETURN OUTPUT
     return send_file(
