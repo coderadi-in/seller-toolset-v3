@@ -187,14 +187,12 @@ def generate_batch():
 
     # DATE FORMATION
     manufacture_date_obj = datetime.strptime(manufacture_date, "%Y-%m-%d")
-    expiry_date_obj = datetime.strptime(expiry_date, "%Y-%m-%d")
     formatted_manufacture_date = manufacture_date_obj.strftime("%d/%m/%Y")
-    formatted_expiry_date = expiry_date_obj.strftime("%d/%m/%Y")
 
     # BEAUTIFICATION
     product_price = f"M.R.P.: {product_price}"
     manufacture_date = f"M.F.G.: {formatted_manufacture_date}"
-    expiry_date = f"E.X.P: Best before {formatted_expiry_date}"
+    expiry_date = f"E.X.P: Best before {expiry_date}" if (expiry_date) else None
     batch_number = f"Batch no.: {batch_number}"
 
     # GENERATE BARCODE & LABEL
