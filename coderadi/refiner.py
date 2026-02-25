@@ -2,6 +2,7 @@ import io
 import numpy as np
 from PIL import Image
 
+# * FUNCTION TO REFINE IMAGE
 def refine(file_stream: io.BytesIO, canvas_size: int = 1000, quality: int = 75):
     """
     file_stream: file-like object (request.files['image'])
@@ -41,3 +42,25 @@ def refine(file_stream: io.BytesIO, canvas_size: int = 1000, quality: int = 75):
 
     output.seek(0)
     return output
+
+# * FUNCTION TO CONVERT IMAGE TO OTHER FORMATS
+def convert(image_file: io.BytesIO, output_format: str = 'jpeg') -> io.BytesIO:
+    '''
+    Converts image format to another format
+
+    :param image_file: The image file to convert.
+    :param output_format: The output format for the file.
+    '''
+
+    # INITIALIZE IMAGE PROCESSORS
+    image = Image.open(image_file)
+    buffer = io.BytesIO()
+
+    # REFINE JPEG COMPATIBILITY
+    if (image.mode == 'RGBA') and (output_format == 'jpeg'):
+        image = image.convert('RGB')
+
+    # SAVE IMAGE TO BUFFER
+    image.save(buffer, output_format)
+    buffer.seek(0)
+    return buffer

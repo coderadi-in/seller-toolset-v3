@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
-    <title>Image refiner | Seller Toolset</title>
+    <title>Image converter | Seller Toolset</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/image_refiner.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/image_refiner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/image_converter.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/image_converter.css') }}">
 </head>
 
 <body>
     {% include 'components/header.html' %}
 
     <main class="main column gap-50">
-        <section class="image-refine">
+        <section class="image-convert">
             <section class="section">
-                <form action="/tools/image-refiner/refine" method="post" class="form column gap-20"
+                <form action="/tools/image-converter/convert" method="post" class="form column gap-20"
                     enctype="multipart/form-data">
                     <div class="area column gap-10">
                         <label for="fileUpload" class="row gap-10">
@@ -32,8 +32,8 @@
 
                     <div class="area column gap-20">
                         <button type="submit" class="btn icon-fl" id="startCrop">
-                            <span class="symbol">filter</span>
-                            <span class="text">Refine</span>
+                            <span class="symbol">sync</span>
+                            <span class="text">Convert</span>
                         </button>
                     </div>
                 </form>
@@ -45,7 +45,7 @@
                 <div class="info-area column gap-10">
                     <div class="status row gap-10">
                         <span class="symbol">progress_activity</span>
-                        <span class="text">Refining...</span>
+                        <span class="text">Converting...</span>
                     </div>
 
                     <p class="para">
@@ -69,14 +69,14 @@
                         <h1 class="h1 index link btn fl">1</h1>
                         <h1 class="h1">Configs</h1>
 
-                        <p class="para">Upload image, click <span class="title highlight">Refine</span>.</p>
+                        <p class="para">Upload image, click <span class="title highlight">Convert</span>.</p>
                     </div>
 
                     <div class="step column gap-10">
                         <h1 class="h1 index link btn fl">2</h1>
                         <h1 class="h1">Backend</h1>
 
-                        <p class="para">Our app will process the image, and refine it.</span>
+                        <p class="para">Our app will process the image, detect it's current format, and convert it to JPEG.</span>
                         </p>
                     </div>
 
@@ -84,14 +84,14 @@
                         <h1 class="h1 index link btn fl">3</h1>
                         <h1 class="h1">It's done</h1>
 
-                        <p class="para">Then you'll receive the refined image downloaded at your device.</p>
+                        <p class="para">Then you'll receive the converted image downloaded at your device.</p>
                     </div>
                 </div>
             </section>
         </section>
     </main>
 
-    <script src="{{ url_for('static', filename='js/pages/image_refiner.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/image_converter.js') }}"></script>
 </body>
 
 </html>

@@ -1,0 +1,45 @@
+/* | PDF CROP [START] */
+.image-convert .form {
+    max-width: 700px;
+    background-color: var(--color-bg-card);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.image-convert .area {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 10px;
+}
+/* | PDF CROP [END] */
+
+/* | INFO [START] */
+.info {display: none;}
+
+.info .info-area {
+    width: min(80vw, 700px);
+    margin: 0 auto;
+    background-color: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* | DOC SECTION [START] */
+.doc .body {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.doc .body .step {
+    background-color: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.doc .body .index {
+    width: fit-content;
+    font-size: 2rem;
+    margin-left: auto;
+}
+/* | DOC SECTION [END] */

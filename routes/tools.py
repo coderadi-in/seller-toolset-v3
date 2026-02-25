@@ -7,7 +7,7 @@
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 from datetime import datetime
-from coderadi.refiner import refine
+from coderadi.refiner import refine, convert
 from coderadi.cropper import ShippingLabelCropper, InvoiceCropper
 from coderadi.sheets import generate_barcode
 from coderadi.sheets import LabelGridPDFService as LabelGenerator
@@ -247,4 +247,34 @@ def refine_image():
         as_attachment=True,
         download_name="refined_image.jpg",
         mimetype="image/jpeg",
+    )
+
+# ==================================================
+# IMAGE CONVERSION
+# ==================================================
+
+# & IMAGE CONVERTING ROUTE
+@tools.route('/image-converter/')
+def image_converter():
+    return render_template("pages/image_converter.html")
+
+# | IMAGE CONVERT HANDLING ROUTE
+@tools.route('/image-converter/convert', methods=['POST'])
+def convert_image():
+    # ACCESS FORM DATA
+    image_file = request.files.get('fileUpload')
+
+    # VALIDATION
+    if (not image_file.read()):
+        return redirect(url_for('tools.image_converter'))
+    
+    # CONVERT IMAGE
+    converted_image = convert(image_file)
+
+    # RETURN OUTPUT
+    return send_file(
+        converted_image,
+        as_attachment=True,
+        download_name="converted_image.jpg",
+        mimetype="image/jpeg"
     )
