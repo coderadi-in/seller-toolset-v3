@@ -354,9 +354,9 @@ label {
 }
 
 .input {
-    border: 1px solid var(--color-border);
+    border: none;
     color: var(--color-text-main);
-    background-color: transparent;
+    background-color: var(--color-border);
     font-family: "Inter", sans-serif;
     outline: none;
     padding: 10px;

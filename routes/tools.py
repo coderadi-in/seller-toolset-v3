@@ -7,7 +7,7 @@
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 from datetime import datetime
-import coderadi.cropper as cropper
+from coderadi.cropper import ShippingLabelCropper, InvoiceCropper
 from coderadi.sheets import generate_barcode
 from coderadi.sheets import LabelGridPDFService as LabelGenerator
 
@@ -40,16 +40,56 @@ def crop_pdf_route():
         return redirect(url_for('tools.pdf_cropper'))
     
     if (platform == 'flipkart'):
-        output = cropper.crop_flipkart(pdf_file)
+        output = ShippingLabelCropper.crop_flipkart(pdf_file)
 
     elif (platform == 'shopsy'):
-        output = cropper.crop_shopsy(pdf_file)
+        output = ShippingLabelCropper.crop_shopsy(pdf_file)
 
     elif (platform == 'meesho'):
-        output = cropper.crop_meesho(pdf_file)
+        output = ShippingLabelCropper.crop_meesho(pdf_file)
 
     elif (platform  == 'amazon'):
-        output = cropper.process_amazon(pdf_file)
+        output = ShippingLabelCropper.process_amazon(pdf_file)
+
+    # RETURN FILE
+    return send_file(
+        output,
+        as_attachment=True,
+        download_name="cropped_invoice.pdf",
+        mimetype="application/pdf",
+    )
+
+# ==================================================
+# INVOICE CROPPER
+# ==================================================
+
+# & INVOICE CROPPER ROUTE
+@tools.route("/invoice-cropper/")
+def invoice_cropper():
+    return render_template("pages/invoice_cropper.html")
+
+# | INVOICE CROP HANDLER ROUTE
+@tools.route("/invoice-cropper/crop", methods=["POST"])
+def crop_invoice_route():
+    # ACCESS FORM DATA
+    pdf_file = request.files.get('fileUpload')
+    platform = request.form.get('platformSelect')
+
+    # VALIDATION
+    if (not pdf_file.read()):
+        return redirect(url_for('tools.invoice_cropper'))
+    
+    if (platform == 'flipkart'):
+        output = InvoiceCropper.crop_flipkart(pdf_file)
+
+    elif (platform == 'shopsy'):
+        output = InvoiceCropper.crop_shopsy(pdf_file)
+
+    elif (platform == 'meesho'):
+        output = InvoiceCropper.crop_meesho(pdf_file)
+
+    elif (platform  == 'amazon'):
+        output = InvoiceCropper.crop_amazon(pdf_file)
 
     # RETURN FILE
     return send_file(

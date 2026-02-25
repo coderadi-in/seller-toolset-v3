@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
-    <title>PDF Cropper | Seller Toolset</title>
+    <title>Invoice Cropper | Seller Toolset</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/pdf_cropper.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/pdf_cropper.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/invoice_cropper.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/invoice_cropper.css') }}">
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" /> -->
 </head>
@@ -19,9 +19,9 @@
     {% include 'components/header.html' %}
 
     <main class="main column gap-50">
-        <section class="pdf-crop">
+        <section class="invoice-crop">
             <section class="section">
-                <form action="/tools/pdf-cropper/crop" method="post" class="form column gap-20"
+                <form action="/tools/invoice-cropper/crop" method="post" class="form column gap-20"
                     enctype="multipart/form-data">
                     <div class="area column gap-10">
                         <label for="fileUpload" class="row gap-10">
@@ -95,7 +95,7 @@
                         <h1 class="h1 index link btn fl">2</h1>
                         <h1 class="h1">Backend</h1>
 
-                        <p class="para">Our app will process the file, check for label and crop it out.</span>
+                        <p class="para">Our app will process the file, check for invoice and crop it out.</span>
                         </p>
                     </div>
 
@@ -111,7 +111,7 @@
         </section>
     </main>
 
-    <script src="{{ url_for('static', filename='js/pages/pdf_cropper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/invoice_cropper.js') }}"></script>
 </body>
 
 </html>
