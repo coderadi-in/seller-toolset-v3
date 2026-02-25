@@ -7,6 +7,7 @@
 # ? IMPORTS
 from flask import Blueprint, render_template, request, send_file, redirect, url_for
 from datetime import datetime
+from coderadi.refiner import refine
 from coderadi.cropper import ShippingLabelCropper, InvoiceCropper
 from coderadi.sheets import generate_barcode
 from coderadi.sheets import LabelGridPDFService as LabelGenerator
@@ -218,4 +219,34 @@ def generate_batch():
         as_attachment=True,
         download_name="batch_label.pdf",
         mimetype="application/pdf"
+    )
+
+# ==================================================
+# IMAGE REFINING
+# ==================================================
+
+# & IMAGE REFINING ROUTE
+@tools.route('/image-refiner/')
+def image_refiner():
+    return render_template("pages/image_refiner.html")
+
+# | IMAGE REFINE HANDLER ROUTE
+@tools.route('/image-refiner/refine', methods=['POST'])
+def refine_image():
+    # ACCESS FORM DATA
+    input_image = request.files.get('fileUpload')
+
+    # VALIDATION
+    if (not input_image.read()):
+        return redirect(url_for('tools.image_refiner'))
+    
+    # REFINE IMAGE
+    refined_bytes = refine(input_image)
+
+    # RETURN OUTPUT
+    return send_file(
+        refined_bytes,
+        as_attachment=True,
+        download_name="refined_image.jpg",
+        mimetype="image/jpeg",
     )
