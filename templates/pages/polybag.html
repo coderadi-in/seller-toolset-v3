@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/icon.ico') }}" type="image/x-icon">
+    <title>Polybag size calculator | Seller toolset</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/polybag.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anim/polybag.css') }}">
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+    <main class="main column gap-100">
+        <section class="calculator">
+            <section class="section column gap-50">
+                <div class="inputs column gap-20">
+                    <div class="content row gap-20">
+                        <div class="left">
+                            <span class="symbol fl-icon illustration">package_2</span>
+                        </div>
+
+                        <div class="right column gap-20">
+                            <div class="row gap-10">
+                                <span class="symbol illustrating-length">height</span>
+                                <input type="number" name="productLength" id="productLength" class="input"
+                                    placeholder="Product length (inches)">
+                            </div>
+
+                            <div class="row gap-10">
+                                <span class="symbol illustrating-height">height</span>
+                                <input type="number" name="productHeight" id="productHeight" class="input"
+                                    placeholder="Product height (inches)">
+                            </div>
+
+                            <div class="row gap-10">
+                                <span class="symbol illustrating-width">height</span>
+                                <input type="number" name="productWidth" id="productWidth" class="input"
+                                    placeholder="Product width (inches)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="res-row gap-10 actions">
+                        <div class="btn fl" id="calcBtn">
+                            <span class="mini title">calculate</span>
+                        </div>
+
+                        <div class="btn ot" id="resBtn">
+                            <span class="mini title">reset</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="outputs row gap-20">
+                    <div class="left">
+                        <span class="symbol illustration">crop_portrait</span>
+                    </div>
+
+                    <div class="right column gap-20">
+                        <div class="output-group row gap-10">
+                            <span class="symbol illustrating-length">height</span>
+                            <span class="text">Length:</span>
+                            <span class="text" id="lengthOutput">0 inches</span>
+                        </div>
+
+                        <div class="output-group row gap-10">
+                            <span class="symbol illustrating-height">height</span>
+                            <span class="text">Height:</span>
+                            <span class="text" id="heightOutput">0 inches</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="{{ url_for('static', filename='js/pages/polybag.js') }}"></script>
+</body>
+
+</html>

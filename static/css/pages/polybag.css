@@ -1,0 +1,42 @@
+/* | ILLUSTRATION */
+.inputs .illustration {font-size: 20vw;}
+.outputs .illustration {font-size: 10vw;}
+
+/* ================================================== */
+/* INPUT & OUTPUT */
+/* ================================================== */
+
+.inputs,
+.outputs {
+    padding: 20px;
+    border-radius: 16px;
+    background-color: var(--color-bg-card);
+}
+
+.inputs .right, .outputs .right {width: 100%;}
+.inputs .input {width: 100%;}
+
+.symbol.illustrating-length {transform: rotate(90deg);}
+.symbol.illustrating-width {transform: skewX(35deg) rotateX(45deg);}
+
+.actions {margin: 0 auto;}
+
+.output-group {
+    background-color: var(--color-border);
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* & RESPONSIVENESS */
+@media (max-width: 768px) {
+    .outputs .illustration {font-size: 20vw;}
+}
+
+@media (max-width: 425px) {
+    .inputs .illustration {font-size: 40vw;}
+    .outputs .illustration {font-size: 40vw;}
+
+    .inputs .content,
+    .outputs {flex-direction: column;}
+}

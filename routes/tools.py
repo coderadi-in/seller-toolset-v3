@@ -119,6 +119,11 @@ def price_calculator():
 def roi_calculator():
     return render_template("pages/roi_calculator.html")
 
+# & PANNI SIZE CALCULATOR ROUTE
+@tools.route('/polybag-size-calculator/')
+def polybag_size_calculator():
+    return render_template("pages/polybag.html")
+
 # ==================================================
 # FBA GENERATION
 # ==================================================
