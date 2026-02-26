@@ -97,7 +97,7 @@ class ShippingLabelCropper:
         for page in reader.pages:
             page.mediabox.lower_left = (
                 0,
-                page.mediabox.height - page.mediabox.height * 0.42
+                page.mediabox.height - page.mediabox.height * 0.45
             )
 
             # ADDING UPDATE RATIO IN PDF WRITER
