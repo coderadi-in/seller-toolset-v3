@@ -36,4 +36,9 @@
 .tools .tool:nth-child(3) {transition-delay: 200ms;}
 .tools .tool:nth-child(4) {transition-delay: 300ms;}
 .tools .tool:nth-child(5) {transition-delay: 400ms;}
+.tools .tool:nth-child(6) {transition-delay: 500ms;}
+.tools .tool:nth-child(7) {transition-delay: 600ms;}
+.tools .tool:nth-child(8) {transition-delay: 700ms;}
+.tools .tool:nth-child(9) {transition-delay: 800ms;}
+.tools .tool:nth-child(10) {transition-delay: 900ms;}
 /* | TOOLS SECTION [END] */
