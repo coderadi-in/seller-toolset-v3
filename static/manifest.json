@@ -1,0 +1,30 @@
+{
+  "name": "Markrtd Seller Tools",
+  "short_name": "Seller-tools",
+  "description": "All in one smart E-com tool-set.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+
+  "background_color": "#020617",
+  "theme_color": "#E5E7EB",
+
+  "icons": [
+    {
+      "src": "/static/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "categories": ["business", "productivity", "e-commerce"],
+  "lang": "en"
+}

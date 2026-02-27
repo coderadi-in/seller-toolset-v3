@@ -18,6 +18,9 @@
     <meta name="author" content="MarkRTD">
     <link rel="canonical" href="https://sellertool.markrtd.com/">
 
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#020617">
+
     <meta name="description"
         content="SellerTool by MarkRTD helps ecommerce sellers with shipping label cropper, ROI calculator, product pricing tools, MRP tag generator, and powerful seller utilities for Amazon, Meesho, and Flipkart sellers.">
 
@@ -78,7 +81,7 @@
                         <p class="para">This tool is helpful to crop PDFs of invoices of different E-com platforms and
                             extract shipping label from them.</p>
                     </a>
-                    
+
                     <a href="/tools/invoice-cropper/" class="tool link column gap-20">
                         <div class="row gap-10">
                             <img src="{{ url_for('static', filename='assets/icons/invoice.png') }}" alt="PDF cropper"
@@ -164,31 +167,34 @@
                             <h2 class="h2">Image refiner</h2>
                         </div>
 
-                        <p class="para">This tool is designed to refine product image so that it takes less shipping charges on E-com platforms.
+                        <p class="para">This tool is designed to refine product image so that it takes less shipping
+                            charges on E-com platforms.
                         </p>
                     </a>
 
                     <a href="/tools/image-converter/" class="tool link column gap-20">
                         <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/edit-image.png') }}" alt="Image Converter"
-                                class="icon">
+                            <img src="{{ url_for('static', filename='assets/icons/edit-image.png') }}"
+                                alt="Image Converter" class="icon">
 
                             <h2 class="h2">Image converter</h2>
                         </div>
 
-                        <p class="para">This tool is designed to convert product image to JPG, in future we may release other formats also.
+                        <p class="para">This tool is designed to convert product image to JPG, in future we may release
+                            other formats also.
                         </p>
                     </a>
-                    
+
                     <a href="/tools/polybag-size-calculator/" class="tool link column gap-20">
                         <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/polybag.png') }}" alt="Polybag size calculator"
-                                class="icon">
+                            <img src="{{ url_for('static', filename='assets/icons/polybag.png') }}"
+                                alt="Polybag size calculator" class="icon">
 
                             <h2 class="h2">Polybag size calculator</h2>
                         </div>
 
-                        <p class="para">This tool is designed to calculate polybag sizes so that the product fits inside it properly.</p>
+                        <p class="para">This tool is designed to calculate polybag sizes so that the product fits inside
+                            it properly.</p>
                     </a>
                 </div>
             </section>
@@ -204,6 +210,12 @@
 
     <script type="module" src="{{ url_for('static', filename='js/base/observer.js') }}"></script>
     <script type="module" src="{{ url_for('static', filename='js/pages/home.js') }}"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("{{ url_for('static', filename='sw.js') }}");
+        }
+    </script>
 </body>
 
 </html>
