@@ -4,7 +4,11 @@
     width: 50%;
 }
 
-.h1 { font-size: min(4rem, 15vw); }
+.h1 p {
+    font-size: 4rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
 .hero .btn {width: fit-content;}
 
 .hero .img {
@@ -29,6 +33,18 @@
 .products .grid {
     grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
+
+/* | TOOLS SECTION [START] */
+.tools .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.tools .tool {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--color-border);
+}
+/* | TOOLS SECTION [END] */
 
 /* | STRIP SECTION [START] */
 .strip {
