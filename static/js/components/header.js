@@ -1,7 +1,17 @@
 // ? GETTING DOC ELEMENTS
 const themeControl = document.getElementById("theme-control");
+const themeSymbol = document.getElementById("theme-symbol");
 const menuBtns = document.querySelectorAll(".menu-btn");
 const navbar = document.querySelector(".nav");
+
+// * FUNCTION TO CHANGE SYMBOL OF #themeSymbol
+function toggleThemeSymbol() {
+    if (themeSymbol.textContent === "light_mode") {
+        themeSymbol.textContent = "dark_mode";
+    } else {
+        themeSymbol.textContent = "light_mode";
+    }
+}
 
 // * FUNCTION TO SAVE THEME PREFERENCE
 function saveThemePreference(theme) {
@@ -23,6 +33,7 @@ function toggleTheme() {
     }
 
     saveThemePreference(document.body.classList.contains('dark') ? 'dark' : 'light');
+    toggleThemeSymbol();
 }
 
 // * FUNCTION TO TOGGLE NAVBAR

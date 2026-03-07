@@ -42,15 +42,18 @@
         <section class="hero">
             <section class="section row gap-50">
                 <div class="left column gap-20">
-                    <h1 class="h1">
-                        <p>Crop PDFs.</p>
-                        <p>Calculate prices.</p>
-                        <p>Track returns.</p>
-                    </h1>
+                    <h1 class="h1">Seller Tool by Mark RTD</h1>
 
-                    <h3 class="h3">All-in-one workspace for documents and business math.</h3>
+                    <p class="para">Seller Tool is a complete ecommerce support and mentorship platform
+                        created to simplify online selling in India.</p>
 
-                    <a href="/tools/pdf-cropper/" class="link btn fl">Start with PDF cropper</a>
+                    <p class="para">Whether you're a beginner or a scaling seller, Seller Tool gives you
+                        clarity and direction.</p>
+
+                    <div class="res-row gap-10">
+                        <a href="/tools" class="link btn fl">Explore tools</a>
+                        <a href="https://markrtd.com/" class="link btn fl">Buy Branded Packaging</a>
+                    </div>
                 </div>
 
                 <div class="right center">
@@ -62,139 +65,53 @@
 
         <hr class="divider">
 
-        <section class="tools" id="tools">
+        <section class="parichaya">
+            <section class="section row gap-50 h-sb">
+                <div class="right-section">
+                    <img src="{{ url_for('static', filename='assets/images/suraz_bhai.png') }}" alt="Image"
+                        class="img">
+                </div>
+
+                <div class="left-section column gap-20">
+                    <span class="text title highlight">We're E-commerce people</span>
+                    <h1 class="h1">Our Vision</h1>
+
+                    <ul class="no-list column gap-20">
+                        <li>To empower every Indian online seller with smart, sustainable, and
+                            affordable packaging — helping them build strong brands and
+                            smoother logistics.
+                        </li>
+
+                        <li>SellerTool is a powerful collection of online tools built for
+                            ecommerce sellers, resellers, and online business owners —
+                            designed to simplify business math, document processing, pricing
+                            decisions, ROI analysis, and label generation.
+                        </li>
+                    </ul>
+
+                    <p class="para">India's Top Ecommerce Channel with more than 700k+ Followers & Subscriber</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="products">
             <section class="section column gap-50">
                 <div class="head column v-center gap-10">
-                    <h1 class="h1">Explore tools</h1>
-                    <p class="para">Explore a curated selection of tools built for optimizing business math.</p>
+                    <h1 class="h1">our products</h1>
+                    <p class="para">Always try to do something new &amp; unique.</p>
                 </div>
 
                 <div class="body grid gap-20">
-                    <a href="/tools/pdf-cropper/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/pdf.png') }}" alt="PDF cropper"
-                                class="icon">
-
-                            <h2 class="h2">PDF Cropper</h2>
-                        </div>
-
-                        <p class="para">This tool is helpful to crop PDFs of invoices of different E-com platforms and
-                            extract shipping label from them.</p>
+                    <a href="https://www.markrtd.com" class="link product">
+                        <img src="{{ url_for('static', filename='assets/images/website.png') }}" alt="Website" class="img">
                     </a>
 
-                    <a href="/tools/invoice-cropper/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/invoice.png') }}" alt="PDF cropper"
-                                class="icon">
-
-                            <h2 class="h2">Invoice Cropper</h2>
-                        </div>
-
-                        <p class="para">This tool is helpful to crop PDFs of invoices of different E-com platforms and
-                            extract invoices from them.</p>
+                    <a href="" class="link product">
+                        <img src="{{ url_for('static', filename='assets/images/ngo.png') }}" alt="NGO" class="img">
                     </a>
-
-                    <a href="/tools/cr-calculator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/pr-calc.png') }}" alt="CR Calculator"
-                                class="icon">
-
-                            <h2 class="h2">CR Calculator</h2>
-                        </div>
-
-                        <p class="para">This tool allow you to calculate the hidden losses on products like CR (Custom
-                            return) per order.</p>
-                    </a>
-
-                    <a href="/tools/price-calculator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/sp-calc.png') }}"
-                                alt="Price Calculator" class="icon">
-
-                            <h2 class="h2">Price calculator</h2>
-                        </div>
-
-                        <p class="para">This tool is useful to calculate the ideal price of a product including margins
-                            and hidden losses per order.</p>
-                    </a>
-
-                    <a href="/tools/roi-calculator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/roi.png') }}" alt="ROI Calculator"
-                                class="icon">
-
-                            <h2 class="h2">ROI calculator</h2>
-                        </div>
-
-                        <p class="para">This tool is useful to calculate the weather ROI on ads spent on a specific
-                            product
-                            is profitable or not.</p>
-                    </a>
-
-                    <a href="/tools/fba-generator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/fba.png') }}" alt="FBA Generator"
-                                class="icon">
-
-                            <h2 class="h2">FBA Generator</h2>
-                        </div>
-
-                        <p class="para">This tool is built to generate clean and printable FBA Labels of specific
-                            product.
-                            A single generation builds 40 Labels on an A4 sheet.
-                        </p>
-                    </a>
-
-                    <a href="/tools/batch-generator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/batch.png') }}" alt="Batch Generator"
-                                class="icon">
-
-                            <h2 class="h2">Batch Generator</h2>
-                        </div>
-
-                        <p class="para">This tool is built to generate clean and printable Batch Labels of specific
-                            product.
-                            A single generation builds 27 Labels on an A4 sheet.
-                        </p>
-                    </a>
-
-                    <a href="/tools/image-refiner/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/refine.png') }}" alt="Image Refiner"
-                                class="icon">
-
-                            <h2 class="h2">Image refiner</h2>
-                        </div>
-
-                        <p class="para">This tool is designed to refine product image so that it takes less shipping
-                            charges on E-com platforms.
-                        </p>
-                    </a>
-
-                    <a href="/tools/image-converter/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/edit-image.png') }}"
-                                alt="Image Converter" class="icon">
-
-                            <h2 class="h2">Image converter</h2>
-                        </div>
-
-                        <p class="para">This tool is designed to convert product image to JPG, in future we may release
-                            other formats also.
-                        </p>
-                    </a>
-
-                    <a href="/tools/polybag-size-calculator/" class="tool link column gap-20">
-                        <div class="row gap-10">
-                            <img src="{{ url_for('static', filename='assets/icons/polybag.png') }}"
-                                alt="Polybag size calculator" class="icon">
-
-                            <h2 class="h2">Polybag size calculator</h2>
-                        </div>
-
-                        <p class="para">This tool is designed to calculate polybag sizes so that the product fits inside
-                            it properly.</p>
+                    
+                    <a href="" class="link product">
+                        <img src="{{ url_for('static', filename='assets/images/service.png') }}" alt="Service" class="img">
                     </a>
                 </div>
             </section>
